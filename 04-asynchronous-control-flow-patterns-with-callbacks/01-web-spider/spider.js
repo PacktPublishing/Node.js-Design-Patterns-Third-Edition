@@ -13,26 +13,26 @@ function spider (url, cb) {
       console.log(`Downloading ${url} into ${filename}`)
       request(url, (err, response, body) => { // [2]
         if (err) {
-          return cb(err)
-        }
-
-        mkdirp(path.dirname(filename), err => { // [3]
-          if (err) {
-            return cb(err)
-          }
-
-          fs.writeFile(filename, body, err => { // [4]
+          cb(err)
+        } else {
+          mkdirp(path.dirname(filename), err => { // [3]
             if (err) {
-              return cb(err)
+              cb(err)
+            } else {
+              fs.writeFile(filename, body, err => { // [4]
+                if (err) {
+                  cb(err)
+                } else {
+                  cb(null, filename, true)
+                }
+              })
             }
-
-            return cb(null, filename, true)
           })
-        })
+        }
       })
+    } else {
+      cb(null, filename, false)
     }
-
-    return cb(null, filename, false)
   })
 }
 
