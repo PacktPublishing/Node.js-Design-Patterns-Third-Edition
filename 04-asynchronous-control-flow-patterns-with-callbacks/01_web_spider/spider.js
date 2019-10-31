@@ -8,20 +8,20 @@ import { urlToFilename } from './utils.js'
 
 function spider (url, cb) {
   const filename = urlToFilename(url)
-  fs.access(filename, err => {
+  fs.access(filename, err => { // [1]
     if (err && err.code === 'ENOENT') {
       console.log(`Downloading ${url} into ${filename}`)
-      request(url, (err, response, body) => {
+      request(url, (err, response, body) => { // [2]
         if (err) {
           return cb(err)
         }
 
-        mkdirp(path.dirname(filename), err => {
+        mkdirp(path.dirname(filename), err => { // [3]
           if (err) {
             return cb(err)
           }
 
-          fs.writeFile(filename, body, err => {
+          fs.writeFile(filename, body, err => { // [4]
             if (err) {
               return cb(err)
             }
