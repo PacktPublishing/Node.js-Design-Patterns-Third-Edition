@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Node.Js Design Patterns Third Edition, published by Packt",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "eslint ."
   },
@@ -30,6 +31,7 @@
   },
   "homepage": "https://github.com/PacktPublishing/Node.js-Design-Patterns-Third-Edition#readme",
   "devDependencies": {
+    "babel-eslint": "^10.0.3",
     "eslint": "^6.5.1",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
