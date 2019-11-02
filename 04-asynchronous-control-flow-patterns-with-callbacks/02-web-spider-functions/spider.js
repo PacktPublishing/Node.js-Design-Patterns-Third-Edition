@@ -34,7 +34,7 @@ function download (url, filename, cb) {
 function spider (url, cb) {
   const filename = urlToFilename(url)
   fs.access(filename, err => {
-    if (!err || err.code !== 'ENOENT') {
+    if (!err || err.code !== 'ENOENT') { // [1]
       return cb(null, filename, false)
     }
     download(url, filename, err => {
