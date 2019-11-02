@@ -7,5 +7,5 @@ First version of web spider that demostrates CPS and callback hell.
 Install the necessary dependencies with `npm install` and then run:
 
 ```bash
-node spider-cli https://loige.co
+node spider-cli.js https://loige.co
 ```

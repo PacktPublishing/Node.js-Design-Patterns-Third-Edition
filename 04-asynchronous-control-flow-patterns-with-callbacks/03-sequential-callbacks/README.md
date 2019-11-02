@@ -7,5 +7,5 @@ Simple example that demostrates sequential tasks using callbacks
 Run:
 
 ```bash
-node test
+node test.js
 ```
