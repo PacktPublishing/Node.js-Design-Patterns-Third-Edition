@@ -1,5 +1,5 @@
 {
-  "name": "04-web-spider-v2",
+  "name": "09-queue-limited-parallel-execution-pattern",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,12 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "mkdirp": "^0.5.1",
-    "request": "^2.88.0",
-    "slug": "^1.1.0"
   },
   "devDependencies": {
-    "jest": "^24.9.0"
   }
 }
