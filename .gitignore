@@ -99,3 +99,6 @@ public
 
 # TernJS port file
 .tern-port
+
+# Webstorm et al
+.idea
