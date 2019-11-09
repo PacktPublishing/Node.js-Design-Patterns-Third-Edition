@@ -5,9 +5,6 @@ import path from 'path'
 import request from 'request'
 import mkdirp from 'mkdirp'
 import { urlToFilename, getPageLinks } from './utils.js'
-import TaskQueue from './TaskQueue.js'
-
-const spiderQueue = new TaskQueue(2)
 
 function saveFile (filename, contents, cb) {
   mkdirp(path.dirname(filename), err => {
@@ -34,33 +31,20 @@ function download (url, filename, cb) {
   })
 }
 
-function spiderLinks (currentUrl, body, nesting, cb) {
+function spiderLinks (currentUrl, body, nesting, queue) {
   if (nesting === 0) {
-    return process.nextTick(cb)
+    return
   }
 
   const links = getPageLinks(currentUrl, body)
   if (links.length === 0) {
-    return process.nextTick(cb)
+    return
   }
 
-  let completed = 0
-  let hasErrors = false
-
-  function done (err) {
-    if (err) {
-      hasErrors = true
-      return cb(err)
-    }
-    if (++completed === links.length && !hasErrors) {
-      return cb()
-    }
-  }
-
-  links.forEach(link => spider(link, nesting - 1, done))
+  links.forEach(link => spider(link, nesting - 1, queue))
 }
 
-function spiderTask (url, nesting, cb) {
+function spiderTask (url, nesting, queue, cb) {
   const filename = urlToFilename(url)
   fs.readFile(filename, 'utf8', (err, fileContent) => {
     if (err) {
@@ -73,25 +57,26 @@ function spiderTask (url, nesting, cb) {
           return cb(err)
         }
 
-        spiderLinks(url, requestContent, nesting, cb)
+        spiderLinks(url, requestContent, nesting, queue)
+        return cb()
       })
     }
 
-    spiderLinks(url, fileContent, nesting, cb)
+    spiderLinks(url, fileContent, nesting, queue)
+    return cb()
   })
 }
 
 const spidering = new Set()
-function spider (url, nesting, cb) {
+function spider (url, nesting, queue) {
   if (spidering.has(url)) {
-    return cb()
+    return
   }
 
   spidering.add(url)
-  spiderQueue.pushTask((done) => {
-    spiderTask(url, nesting, done)
+  queue.pushTask((done) => {
+    spiderTask(url, nesting, queue, done)
   })
-  cb()
 }
 
 export default spider
