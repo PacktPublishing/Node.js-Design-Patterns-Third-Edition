@@ -1,7 +1,10 @@
 'use strict'
 
-class TaskQueue {
+import { EventEmitter } from 'events'
+
+class TaskQueue extends EventEmitter {
   constructor (concurrency) {
+    super()
     this.concurrency = concurrency
     this.running = 0
     this.queue = []
@@ -14,9 +17,16 @@ class TaskQueue {
   }
 
   next () {
+    if (this.running === 0 && this.queue.length === 0) {
+      return this.emit('empty')
+    }
+
     while (this.running < this.concurrency && this.queue.length) {
       const task = this.queue.shift()
-      task(() => {
+      task((err) => {
+        if (err) {
+          this.emit('error', err)
+        }
         this.running--
         process.nextTick(this.next.bind(this))
       })
