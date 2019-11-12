@@ -62,6 +62,7 @@ function spider (url, nesting, cb) {
         return cb(err)
       }
 
+      // The file doesn't exists, so let’s download it
       return download(url, filename, (err, requestContent) => {
         if (err) {
           return cb(err)
@@ -71,6 +72,7 @@ function spider (url, nesting, cb) {
       })
     }
 
+    // The file already exists, let’s process the links
     spiderLinks(url, fileContent, nesting, cb)
   })
 }
