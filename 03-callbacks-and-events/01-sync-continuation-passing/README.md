@@ -1,0 +1,11 @@
+# 01-sync-continuation-passing
+
+This example demonstrates continuous passing with callbacks.
+
+## Run
+
+To run the example launch:
+
+```bash
+node index
+```

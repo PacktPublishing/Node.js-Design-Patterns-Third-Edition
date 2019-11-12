@@ -102,3 +102,5 @@ public
 
 # Webstorm et al
 .idea
+
+.DS_Store
