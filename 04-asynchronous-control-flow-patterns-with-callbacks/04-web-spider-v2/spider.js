@@ -33,6 +33,7 @@ function download (url, filename, cb) {
 
 function spiderLinks (currentUrl, body, nesting, cb) {
   if (nesting === 0) {
+    // Remember Zalgo?
     return process.nextTick(cb)
   }
 
