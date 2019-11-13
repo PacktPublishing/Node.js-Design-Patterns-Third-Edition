@@ -1,21 +1,22 @@
 /* eslint handle-callback-err: 0 */
+import fs from 'fs'
 
-const fs = require('fs')
-const cache = {}
+const cache = new Map()
+
 function inconsistentRead (filename, cb) {
-  if (cache[filename]) {
+  if (cache.has(filename)) {
     // invoked synchronously
-    cb(cache[filename])
+    cb(cache.get(filename))
   } else {
     // asynchronous function
     fs.readFile(filename, 'utf8', (err, data) => {
-      cache[filename] = data
+      cache.set(filename, data)
       cb(data)
     })
   }
 }
 
-function createFileReader (filename) {
+export function createFileReader (filename) {
   const listeners = []
   inconsistentRead(filename, value => {
     listeners.forEach(listener => listener(value))

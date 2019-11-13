@@ -1,4 +1,4 @@
-# 01-sync-continuation-passing
+# 01-sync-cps
 
 This example demonstrates continuous passing with callbacks.
 

@@ -1,7 +1,7 @@
 /* eslint standard/no-callback-literal: 0 */
 
-function additionAsync (a, b, cb) {
-  setTimeout(() => cb(a + b), 100)
+function additionAsync (a, b, callback) {
+  setTimeout(() => callback(a + b), 100)
 }
 
 console.log('before')
