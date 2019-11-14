@@ -1,6 +1,5 @@
-'use strict'
+import fs from 'fs'
 
-const fs = require('fs')
 function readJSON (filename, callback) {
   fs.readFile(filename, 'utf8', (err, data) => {
     let parsed

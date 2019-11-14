@@ -7,5 +7,5 @@ This example demonstrates how a function can behave synchronously under certain 
 To run the example launch:
 
 ```bash
-node fileReader-cli
+node index.js
 ```

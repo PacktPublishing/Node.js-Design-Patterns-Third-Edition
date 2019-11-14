@@ -2,22 +2,22 @@
 import fs from 'fs'
 
 const cache = new Map()
-function inconsistentRead (filename, cb) {
+function consistentReadAsync (filename, callback) {
   if (cache.has(filename)) {
-    // invoked synchronously
-    cb(cache.get(filename))
+    // deferred callback invocation
+    process.nextTick(() => callback(cache.get(filename)))
   } else {
     // asynchronous function
     fs.readFile(filename, 'utf8', (err, data) => {
       cache.set(filename, data)
-      cb(data)
+      callback(data)
     })
   }
 }
 
 function createFileReader (filename) {
   const listeners = []
-  inconsistentRead(filename, value => {
+  consistentReadAsync(filename, value => {
     listeners.forEach(listener => listener(value))
   })
 
