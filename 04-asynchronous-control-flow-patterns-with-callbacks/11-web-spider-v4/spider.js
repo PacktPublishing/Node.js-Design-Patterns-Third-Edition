@@ -1,5 +1,3 @@
-'use strict'
-
 import fs from 'fs'
 import path from 'path'
 import request from 'request'
@@ -68,7 +66,7 @@ function spiderTask (url, nesting, queue, cb) {
 }
 
 const spidering = new Set()
-function spider (url, nesting, queue) {
+export function spider (url, nesting, queue) {
   if (spidering.has(url)) {
     return
   }
@@ -78,5 +76,3 @@ function spider (url, nesting, queue) {
     spiderTask(url, nesting, queue, done)
   })
 }
-
-export default spider

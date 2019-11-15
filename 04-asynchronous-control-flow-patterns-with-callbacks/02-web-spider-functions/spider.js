@@ -1,5 +1,3 @@
-'use strict'
-
 import fs from 'fs'
 import path from 'path'
 import request from 'request'
@@ -31,7 +29,7 @@ function download (url, filename, cb) {
   })
 }
 
-function spider (url, cb) {
+export function spider (url, cb) {
   const filename = urlToFilename(url)
   fs.access(filename, err => {
     if (!err || err.code !== 'ENOENT') { // [1]
@@ -45,5 +43,3 @@ function spider (url, cb) {
     })
   })
 }
-
-export default spider

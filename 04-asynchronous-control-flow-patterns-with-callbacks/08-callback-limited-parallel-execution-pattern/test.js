@@ -1,5 +1,3 @@
-'use strict'
-
 function makeSampleTask (name) {
   return (cb) => {
     console.log(`${name} started`)

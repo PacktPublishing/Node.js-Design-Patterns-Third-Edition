@@ -1,12 +1,10 @@
-'use strict'
-
 import fs from 'fs'
 import path from 'path'
 import request from 'request'
 import mkdirp from 'mkdirp'
 import { urlToFilename } from './utils.js'
 
-function spider (url, cb) {
+export function spider (url, cb) {
   const filename = urlToFilename(url)
   fs.access(filename, err => { // [1]
     if (err && err.code === 'ENOENT') {
@@ -35,5 +33,3 @@ function spider (url, cb) {
     }
   })
 }
-
-export default spider

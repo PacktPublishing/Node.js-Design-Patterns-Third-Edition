@@ -1,5 +1,3 @@
-'use strict'
-
 import fs from 'fs'
 import path from 'path'
 import request from 'request'
@@ -55,7 +53,7 @@ function spiderLinks (currentUrl, body, nesting, cb) {
   iterate(0) // [4]
 }
 
-function spider (url, nesting, cb) {
+export function spider (url, nesting, cb) {
   const filename = urlToFilename(url)
   fs.readFile(filename, 'utf8', (err, fileContent) => {
     if (err) {
@@ -77,5 +75,3 @@ function spider (url, nesting, cb) {
     spiderLinks(url, fileContent, nesting, cb)
   })
 }
-
-export default spider

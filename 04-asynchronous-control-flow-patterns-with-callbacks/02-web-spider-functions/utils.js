@@ -1,5 +1,3 @@
-'use strict'
-
 import path from 'path'
 import { URL } from 'url'
 import slug from 'slug'

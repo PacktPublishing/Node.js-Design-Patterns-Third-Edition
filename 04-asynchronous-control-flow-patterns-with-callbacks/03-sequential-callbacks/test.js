@@ -1,5 +1,3 @@
-'use strict'
-
 function asyncOperation (cb) {
   process.nextTick(cb)
 }
