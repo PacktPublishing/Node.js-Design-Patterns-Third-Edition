@@ -1,6 +1,4 @@
-'use strict'
-
-class TaskQueue {
+export class TaskQueue {
   constructor (concurrency) {
     this.concurrency = concurrency
     this.running = 0
@@ -24,5 +22,3 @@ class TaskQueue {
     }
   }
 }
-
-export default TaskQueue

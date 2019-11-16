@@ -1,6 +1,4 @@
-'use strict'
-
-import TaskQueue from './TaskQueue.js'
+import { TaskQueue } from './TaskQueue.js'
 
 function makeSampleTask (name) {
   return (cb) => {

@@ -1,8 +1,6 @@
-'use strict'
-
 import { EventEmitter } from 'events'
 
-class TaskQueue extends EventEmitter {
+export class TaskQueue extends EventEmitter {
   constructor (concurrency) {
     super()
     this.concurrency = concurrency
@@ -34,5 +32,3 @@ class TaskQueue extends EventEmitter {
     }
   }
 }
-
-export default TaskQueue

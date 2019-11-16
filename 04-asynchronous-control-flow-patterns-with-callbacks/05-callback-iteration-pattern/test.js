@@ -1,5 +1,3 @@
-'use strict'
-
 const tasks = [
   (cb) => {
     console.log('Task 1')
