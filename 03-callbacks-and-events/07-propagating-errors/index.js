@@ -1,7 +1,7 @@
-import fs from 'fs'
+import { readFile } from 'fs'
 
 function readJSON (filename, callback) {
-  fs.readFile(filename, 'utf8', (err, data) => {
+  readFile(filename, 'utf8', (err, data) => {
     let parsed
     if (err) {
       // propagate the error and exit the current function

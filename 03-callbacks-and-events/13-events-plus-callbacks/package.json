@@ -1,6 +1,7 @@
 {
   "private": true,
+  "type": "module",
   "dependencies": {
-    "glob": "~4.0.6"
+    "glob": "^7.1.6"
   }
 }

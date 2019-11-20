@@ -1,9 +1,7 @@
-'use strict'
+import { EventEmitter } from 'events'
+import { readFile } from 'fs'
 
-const EventEmitter = require('events').EventEmitter
-const fs = require('fs')
-
-class FindPattern extends EventEmitter {
+class FindRegex extends EventEmitter {
   constructor (regex) {
     super()
     this.regex = regex
@@ -16,8 +14,8 @@ class FindPattern extends EventEmitter {
   }
 
   find () {
-    this.files.forEach(file => {
-      fs.readFile(file, 'utf8', (err, content) => {
+    for (const file of this.files) {
+      readFile(file, 'utf8', (err, content) => {
         if (err) {
           return this.emit('error', err)
         }
@@ -29,13 +27,13 @@ class FindPattern extends EventEmitter {
           match.forEach(elem => this.emit('found', file, elem))
         }
       })
-    })
+    }
     return this
   }
 }
 
-const findPatternObject = new FindPattern(/hello \w+/)
-findPatternObject
+const findRegexInstance = new FindRegex(/hello \w+/)
+findRegexInstance
   .addFile('fileA.txt')
   .addFile('fileB.json')
   .find()
