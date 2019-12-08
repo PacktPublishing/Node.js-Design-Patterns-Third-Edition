@@ -9,37 +9,33 @@ const mkdirpPromises = promisify(mkdirp)
 
 function download (url, filename) {
   console.log(`Downloading ${url}`)
-  let body
+  let content
   return request(url)
     .then(htmlString => {
-      body = htmlString
+      content = htmlString
       return mkdirpPromises(dirname(filename))
     })
-    .then(() => fsPromises.writeFile(filename, body))
+    .then(() => fsPromises.writeFile(filename, content))
     .then(() => {
       console.log(`Downloaded and saved: ${url}`)
-      return body
+      return content
     })
 }
 
 function spiderLinks (currentUrl, content, nesting) {
+  let promise = Promise.resolve()
   if (nesting === 0) {
-    return Promise.resolve()
+    return promise
+  }
+  const links = getPageLinks(currentUrl, content)
+  for (const link of links) {
+    promise = promise.then(() => spider(link, nesting - 1))
   }
 
-  const links = getPageLinks(currentUrl, content)
-  const promises = links.map(link => spider(link, nesting - 1))
-
-  return Promise.all(promises)
+  return promise
 }
 
-const spidering = new Set()
 export function spider (url, nesting) {
-  if (spidering.has(url)) {
-    return Promise.resolve()
-  }
-  spidering.add(url)
-
   const filename = urlToFilename(url)
   return fsPromises.readFile(filename, 'utf8')
     .catch((err) => {
@@ -50,5 +46,5 @@ export function spider (url, nesting) {
       // The file doesn't exists, so let’s download it
       return download(url, filename)
     })
-    .then((content) => (spiderLinks(url, content, nesting)))
+    .then(content => spiderLinks(url, content, nesting))
 }

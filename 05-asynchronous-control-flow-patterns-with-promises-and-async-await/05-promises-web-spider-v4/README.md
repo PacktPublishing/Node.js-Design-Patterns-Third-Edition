@@ -1,4 +1,4 @@
-# 04-web-spider-v3-promises
+# 05-promises-web-spider-v4
 
 Web spider example to demostrate limited parallel asynchronous execution with Promises
 

@@ -1,8 +1,5 @@
-import { EventEmitter } from 'events'
-
-export class TaskQueue extends EventEmitter {
+export class TaskQueue {
   constructor (concurrency) {
-    super()
     this.concurrency = concurrency
     this.running = 0
     this.queue = []
@@ -22,7 +19,7 @@ export class TaskQueue extends EventEmitter {
   next () {
     while (this.running < this.concurrency && this.queue.length) {
       const task = this.queue.shift()
-      task().then(() => {
+      task().finally(() => {
         this.running--
         this.next()
       })

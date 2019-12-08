@@ -1,6 +1,6 @@
-# 04-web-spider-v3-promises
+# 06-asyncawait-web-spider-v2
 
-Web spider example to demostrate parallel asynchronous execution with Promises
+Web spider example to demostrate sequential asynchronous execution with async/await
 
 ## Run
 
