@@ -1,0 +1,16 @@
+{
+  "name": "03-promises-web-spider-v2",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "mkdirp": "^0.5.1",
+    "request-promise-native": "^1.0.8",
+    "request": "^2.88.0",
+    "slug": "^1.1.0"
+  }
+}
