@@ -13,11 +13,13 @@ async function playingWithErrors (throwSyncError) {
     }
     await delayError(1000)
   } catch (err) {
-    console.log(`We have an error: ${err.message}`)
+    console.error(`We have an error: ${err.message}`)
   } finally {
     console.log('Done')
   }
 }
 
+// throws a synchronous error
 playingWithErrors(true)
+// awaited Promise will reject
 playingWithErrors(false)
