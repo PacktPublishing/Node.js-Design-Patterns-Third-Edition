@@ -1,0 +1,13 @@
+{
+  "name": "01-revealing-module-pattern",
+  "version": "1.0.0",
+  "description": "This example demonstrates the revealing module pattern.",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
