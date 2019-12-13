@@ -20,10 +20,11 @@ async function spiderLinks (currentUrl, content, nesting) {
   if (nesting === 0) {
     return
   }
+
   const links = getPageLinks(currentUrl, content)
-  for (const link of links) {
-    await spider(link, nesting - 1)
-  }
+  const promises = links.map(link => spider(link, nesting - 1))
+
+  return Promise.all(promises)
 }
 
 export async function spider (url, nesting) {
