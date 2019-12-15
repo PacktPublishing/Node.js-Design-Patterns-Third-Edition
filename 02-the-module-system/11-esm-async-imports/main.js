@@ -1,13 +1,13 @@
-const SUPPORTED_LANGUAGES = ['it', 'en', 'es']
-const chosenLanguage = process.argv[2]
+const SUPPORTED_LANGUAGES = ['el', 'en', 'es', 'it']
+const selectedLanguage = process.argv[2]
 
-if (!SUPPORTED_LANGUAGES.includes(chosenLanguage)) {
-  console.error('The language specified is not supported')
+if (!SUPPORTED_LANGUAGES.includes(selectedLanguage)) {
+  console.error('The specified language is not supported')
   process.exit(1)
 }
 
-const translationModule = `./strings-${chosenLanguage}.js`
-import(translationModule)
-  .then((module) => {
-    console.log(module.HELLO)
+const translationModule = `./strings-${selectedLanguage}.js` // ①
+import(translationModule) // ②
+  .then((strings) => { // ③
+    console.log(strings.HELLO)
   })
