@@ -1,4 +1,4 @@
-const SUPPORTED_LANGUAGES = ['el', 'en', 'es', 'it']
+const SUPPORTED_LANGUAGES = ['el', 'en', 'es', 'it', 'pl']
 const selectedLanguage = process.argv[2]
 
 if (!SUPPORTED_LANGUAGES.includes(selectedLanguage)) {
