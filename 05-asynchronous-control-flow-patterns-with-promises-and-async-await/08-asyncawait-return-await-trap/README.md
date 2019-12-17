@@ -9,3 +9,4 @@ To run the example launch:
 ```bash
 node errorNotCaught.js
 node errorCaught.js
+```

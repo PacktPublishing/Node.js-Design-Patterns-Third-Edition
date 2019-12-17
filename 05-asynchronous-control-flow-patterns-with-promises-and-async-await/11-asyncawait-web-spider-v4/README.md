@@ -1,6 +1,7 @@
-# 05-promises-web-spider-v4
+# 11-asyncawait-web-spider-v4
 
-Web spider example to demostrate limited parallel asynchronous execution with Promises
+Web spider example to demostrate limited parallel asynchronous execution 
+with async/await and the consumer-producer pattern
 
 ## Run
 
