@@ -4,6 +4,7 @@ import request from 'request-promise-native'
 import mkdirp from 'mkdirp'
 import { urlToFilename, getPageLinks } from './utils.js'
 import { promisify } from 'util'
+import { TaskQueue } from './TaskQueue.js'
 
 const mkdirpPromises = promisify(mkdirp)
 
@@ -16,36 +17,44 @@ async function download (url, filename) {
   return content
 }
 
-async function spiderLinks (currentUrl, content, nesting) {
+async function spiderLinks (currentUrl, content, nesting, queue) {
   if (nesting === 0) {
     return
   }
 
   const links = getPageLinks(currentUrl, content)
-  const promises = links.map(link => spider(link, nesting - 1))
+  const promises = links.map(link => spiderTask(link, nesting - 1, queue))
 
   return Promise.all(promises)
 }
 
 const spidering = new Set()
 
-export async function spider (url, nesting) {
+async function spiderTask (url, nesting, queue) {
   if (spidering.has(url)) {
     return
   }
   spidering.add(url)
 
   const filename = urlToFilename(url)
-  let content
-  try {
-    content = await fsPromises.readFile(filename, 'utf8')
-  } catch (err) {
-    if (err.code !== 'ENOENT') {
-      throw err
+  const content = await queue.runTask(async () => {
+    try {
+      return await fsPromises.readFile(filename, 'utf8')
+    } catch (err) {
+      if (err.code !== 'ENOENT') {
+        throw err
+      }
+
+      // The file doesn't exists, so let’s download it
+      return download(url, filename)
     }
+  })
+  return spiderLinks(url, content, nesting, queue)
+}
 
-    content = await download(url, filename)
-  }
-
-  await spiderLinks(url, content, nesting)
+export async function spider (url, nesting, concurrency) {
+  console.log(concurrency)
+  const queue = new TaskQueue(concurrency)
+  await spiderTask(url, nesting, queue)
+  queue.destroy()
 }
