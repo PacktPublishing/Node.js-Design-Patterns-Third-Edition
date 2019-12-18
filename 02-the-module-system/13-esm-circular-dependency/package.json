@@ -1,5 +1,5 @@
 {
-  "name": "12-esm-read-only-live-bindings",
+  "name": "13-esm-circular-dependency",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
