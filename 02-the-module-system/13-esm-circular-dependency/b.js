@@ -1,6 +1,4 @@
-import * as a from './a.js'
+import * as aModule from './a.js'
 export let loaded = false
-export const aWasLoaded = true
-export const aInstance = a
-
+export const a = aModule
 loaded = true
