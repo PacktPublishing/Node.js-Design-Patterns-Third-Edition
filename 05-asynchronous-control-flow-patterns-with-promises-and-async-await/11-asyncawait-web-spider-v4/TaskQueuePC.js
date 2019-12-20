@@ -1,4 +1,4 @@
-export class TaskQueue {
+export class TaskQueuePC {
   constructor (concurrency) {
     this.taskQueue = []
     this.consumerQueue = []
@@ -13,10 +13,6 @@ export class TaskQueue {
     while (true) {
       try {
         const task = await this.nextTask()
-        if (!task) {
-          console.log('Consumer is terminating')
-          break
-        }
         await task()
       } catch (err) {
         console.error(err)
@@ -43,15 +39,13 @@ export class TaskQueue {
       }
 
       if (this.consumerQueue.length !== 0) {
+        // there is a sleeping consumer available, use it to run our task
         const consumer = this.consumerQueue.shift()
         consumer(taskWrapper)
       } else {
+        // all consumers are busy, enqueue the task
         this.taskQueue.push(taskWrapper)
       }
     })
-  }
-
-  destroy () {
-    this.consumerQueue.forEach(consumer => consumer(null))
   }
 }

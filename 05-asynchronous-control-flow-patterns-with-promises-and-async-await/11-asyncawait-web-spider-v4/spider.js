@@ -4,7 +4,7 @@ import request from 'request-promise-native'
 import mkdirp from 'mkdirp'
 import { urlToFilename, getPageLinks } from './utils.js'
 import { promisify } from 'util'
-import { TaskQueue } from './TaskQueue.js'
+import { TaskQueuePC } from './TaskQueuePC.js'
 
 const mkdirpPromises = promisify(mkdirp)
 
@@ -53,8 +53,5 @@ async function spiderTask (url, nesting, queue) {
 }
 
 export async function spider (url, nesting, concurrency) {
-  console.log(concurrency)
-  const queue = new TaskQueue(concurrency)
-  await spiderTask(url, nesting, queue)
-  queue.destroy()
+  await spiderTask(url, nesting, new TaskQueuePC(concurrency))
 }
