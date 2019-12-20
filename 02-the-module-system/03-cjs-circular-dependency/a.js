@@ -3,6 +3,6 @@ exports.loaded = false
 const b = require('./b')
 
 module.exports = {
-  bWasLoaded: b.loaded,
-  loaded: true
+  b,
+  loaded: true // overrides the previous export
 }
