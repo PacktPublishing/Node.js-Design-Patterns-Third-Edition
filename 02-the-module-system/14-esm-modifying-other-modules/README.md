@@ -12,3 +12,5 @@ node main.js
 
 - `mock-read-file-wrong.js` has a wrong implementation of the mocking mechanism
 - `main-wrong.js` has a wrong implementation of the main file where we end up importing the live bindings and not the actual mock function.
+- `example-sync.js` shows how use the `syncBuiltinESMExports` functionality
+- `mock-read-file-sync.js` fixes all the problems above by using `syncBuiltinESMExports`
