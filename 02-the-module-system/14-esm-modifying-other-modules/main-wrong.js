@@ -6,12 +6,10 @@ mockEnable(Buffer.from('Hello World'))
 
 fs.readFile('fake-path', (err, data) => {
   if (err) {
-    console.error(err)
+    console.error(err) // This would fail here because we are not using the mocked version here
     process.exit(1)
   }
-  console.log(data.toString()) // 'Hello World'
+  console.log(data.toString())
 })
 
 mockDisable()
-// trying to read the file again would fail with
-// [Error: ENOENT: no such file or directory, open 'fake-path']
