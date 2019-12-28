@@ -4,7 +4,7 @@
 // save the original require
 var originalRequire = require
 
-const fs = require('fs')
+const fs = originalRequire('fs')
 
 function loadModule (filename, module, require) {
   const wrappedSrc =
@@ -14,7 +14,7 @@ function loadModule (filename, module, require) {
   eval(wrappedSrc)
 }
 
-require = (moduleName) => {
+require = function require (moduleName) {
   console.log(`Require invoked for module: ${moduleName}`)
   const id = require.resolve(moduleName) // ①
   if (require.cache[id]) { // ②
