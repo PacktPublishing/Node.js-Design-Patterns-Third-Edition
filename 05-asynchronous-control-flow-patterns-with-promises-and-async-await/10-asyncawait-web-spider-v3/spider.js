@@ -47,5 +47,5 @@ export async function spider (url, nesting) {
     content = await download(url, filename)
   }
 
-  await spiderLinks(url, content, nesting)
+  return spiderLinks(url, content, nesting)
 }

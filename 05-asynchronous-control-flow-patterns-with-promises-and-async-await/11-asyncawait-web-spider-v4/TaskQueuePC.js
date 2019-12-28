@@ -12,7 +12,7 @@ export class TaskQueuePC {
   async consumer () {
     while (true) {
       try {
-        const task = await this.nextTask()
+        const task = await this.getNextTask()
         await task()
       } catch (err) {
         console.error(err)
@@ -20,7 +20,7 @@ export class TaskQueuePC {
     }
   }
 
-  async nextTask () {
+  async getNextTask () {
     return new Promise((resolve) => {
       if (this.taskQueue.length !== 0) {
         return resolve(this.taskQueue.shift())
