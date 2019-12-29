@@ -11,4 +11,3 @@ class Logger {
 }
 
 module.exports = new Logger('DEFAULT')
-module.exports.Logger = Logger

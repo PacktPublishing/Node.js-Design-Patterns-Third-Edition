@@ -1,9 +1,9 @@
 {
-  "name": "14-esm-modifying-other-modules",
+  "name": "02-promisify",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
   "type": "module",
+  "description": "This sample demonstrates how to *promisify* a Node.js-style callback-based function.",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

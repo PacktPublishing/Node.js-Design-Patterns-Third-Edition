@@ -1,5 +1,5 @@
 {
-  "name": "12-esm-read-only-live-bindings",
+  "name": "12-esm-mixed-exports",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",

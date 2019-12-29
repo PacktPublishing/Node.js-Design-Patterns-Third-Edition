@@ -1,4 +1,4 @@
-# 12-esm-read-only-live-bindings
+# 14-esm-read-only-live-bindings
 
 This sample demonstrates that imported ESM modules are read-only live bindings
 
