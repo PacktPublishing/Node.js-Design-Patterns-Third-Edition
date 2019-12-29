@@ -53,5 +53,5 @@ async function spiderTask (url, nesting, queue) {
 }
 
 export async function spider (url, nesting, concurrency) {
-  await spiderTask(url, nesting, new TaskQueuePC(concurrency))
+  return spiderTask(url, nesting, new TaskQueuePC(concurrency))
 }
