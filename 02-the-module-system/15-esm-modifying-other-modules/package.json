@@ -1,5 +1,5 @@
 {
-  "name": "15-esm-cjs-interop",
+  "name": "15-esm-modifying-other-modules",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",

@@ -1,4 +1,4 @@
-# 14-esm-modifying-other-modules
+# 15-esm-modifying-other-modules
 
 This sample demonstrates how an ESM module can be use to alter another module.
 

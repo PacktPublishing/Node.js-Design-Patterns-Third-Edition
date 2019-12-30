@@ -1,4 +1,4 @@
-# 15-esm-cjs-interop
+# 16-esm-cjs-interop
 
 This sample demonstrates some ESM and CommonJS differences and ways to make the two systems work together.
 
