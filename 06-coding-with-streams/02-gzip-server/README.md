@@ -13,7 +13,7 @@ node gzip-receive.js
 Than you can send any file with:
 
 ```bash
-node gzip-send.js <pathOfTheFileToSend> localhost
+node gzip-send.js <path_of_the_file_to_send> localhost
 ```
 
 The received files will be saved in the folder `received_files`

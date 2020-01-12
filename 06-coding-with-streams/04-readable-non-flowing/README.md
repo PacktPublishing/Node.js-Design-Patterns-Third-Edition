@@ -1,4 +1,4 @@
-# 03-crypto-gzip-server
+# 04-readable-non-flowing
 
 This examples shows how to implement a add an encryption layer to the previous example.
 
@@ -15,7 +15,7 @@ This will print an encryption secret (hex string) that will need to be used by c
 Than you can send any file with:
 
 ```bash
-node crypto-gzip-send.js <path_of_the_file_to_send> localhost <encryption_secret>
+node crypto-gzip-send.js <pathOfTheFileToSend> localhost <encryption_secret>
 ```
 
 The received files will be saved in the folder `received_files`

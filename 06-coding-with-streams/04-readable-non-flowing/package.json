@@ -1,8 +1,8 @@
 {
-  "name": "03-crypto-gzip-server",
+  "name": "04-readable-non-flowing",
   "version": "1.0.0",
   "description": "",
-  "main": "crypto-gzip-receive.js",
+  "main": "read-stdin.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
