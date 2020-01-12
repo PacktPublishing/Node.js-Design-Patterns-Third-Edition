@@ -1,4 +1,3 @@
-
 import { Readable } from 'stream'
 import Chance from 'chance'
 

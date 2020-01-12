@@ -4,7 +4,7 @@ import Chance from 'chance'
 const chance = new Chance()
 let emittedLength = 0
 
-const randomStream = Readable({
+const randomStream = new Readable({
   read (size) {
     const chunk = chance.string({ length: size })
     this.push(chunk, 'utf8')
