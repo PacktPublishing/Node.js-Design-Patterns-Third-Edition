@@ -1,21 +1,21 @@
 # 04-readable-non-flowing
 
-This examples shows how to implement a add an encryption layer to the previous example.
+This examples shows how to consume a readable stream in non-flowing mode.
 
 ## Run
 
-To run the server you need to launch:
+To run the example you can use:
 
 ```bash
-node crypto-gzip-receive.js
+node read-stdin.js
 ```
 
-This will print an encryption secret (hex string) that will need to be used by clients.
+Now write in the standard input and use `ctrl+d` (unix) or `ctrl+z` (windows) to end the input stream.
 
-Than you can send any file with:
+Alternatively:
 
 ```bash
-node crypto-gzip-send.js <pathOfTheFileToSend> localhost <encryption_secret>
+cat <path_of_file> | node read-stdin.js
 ```
 
-The received files will be saved in the folder `received_files`
+to consume an arbitrary file.
