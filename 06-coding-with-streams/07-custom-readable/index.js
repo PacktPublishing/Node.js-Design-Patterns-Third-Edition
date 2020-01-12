@@ -6,5 +6,5 @@ randomStream
     console.log(`Chunk received (${chunk.length} bytes): ${chunk.toString()}`)
   })
   .on('end', () => {
-    console.log(`Produced ${randomStream.emittedLength} bytes of random data`)
+    console.log(`Produced ${randomStream.emittedBytes} bytes of random data`)
   })
