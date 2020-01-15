@@ -11,10 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chance": "^1.1.4",
-    "mkdirp": "^0.5.1",
-    "request": "^2.88.0",
-    "slug": "^1.1.0"
+    "chance": "^1.1.4"
   },
   "devDependencies": {
     "jest": "^24.9.0"
