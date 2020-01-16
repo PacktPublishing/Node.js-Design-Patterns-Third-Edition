@@ -1,0 +1,17 @@
+{
+  "name": "08-writable-http-entropy-server",
+  "version": "1.0.0",
+  "description": "This examples shows how to implement a custom Readable stream.",
+  "main": "entropy-server.js",
+  "type": "module",
+  "dependencies": {
+    "chance": "^1.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
