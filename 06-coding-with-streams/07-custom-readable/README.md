@@ -23,5 +23,5 @@ node index.js
 or:
 
 ```bash
-node index-inline.js
+node simplified-construction.js
 ```
