@@ -10,3 +10,9 @@ To run the example:
 ```bash
 node index.js
 ```
+
+or
+
+```bash
+node simplified-construction
+```
