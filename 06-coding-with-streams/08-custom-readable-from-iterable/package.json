@@ -1,16 +1,13 @@
 {
-  "name": "10-custom-writable-to-file-stream",
+  "name": "08-custom-readable-from-iterable",
   "version": "1.0.0",
   "description": "",
-  "main": "to-file-stream.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "mkdirp-promise": "^5.0.1"
-  }
+  "license": "ISC"
 }

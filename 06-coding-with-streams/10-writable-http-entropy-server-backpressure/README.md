@@ -1,4 +1,4 @@
-# 09-writable-http-entropy-server-backpressure
+# 10-writable-http-entropy-server-backpressure
 
 This examples shows how to write into a writable stream, specifically an HTTP response sent by a server also taking back-pressure into account.
 
