@@ -1,0 +1,16 @@
+{
+  "name": "11-custom-writable-to-file-stream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "to-file-stream.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mkdirp-promise": "^5.0.1"
+  }
+}

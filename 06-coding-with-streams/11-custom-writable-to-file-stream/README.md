@@ -1,6 +1,6 @@
-# 07-custom-readable
+# 11-custom-writable-to-file-stream
 
-This examples shows how to implement a custom Readable stream.
+This examples shows how to create a custom writable stream.
 
 
 ## Dependencies
@@ -14,13 +14,13 @@ npm install
 
 ## Run
 
-To run the example you can run:
+To run the example:
 
 ```bash
 node index.js
 ```
 
-or:
+or
 
 ```bash
 node simplified-construction.js

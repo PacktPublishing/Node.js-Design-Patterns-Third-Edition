@@ -1,5 +1,5 @@
 {
-  "name": "09-writable-http-entropy-server-backpressure",
+  "name": "10-writable-http-entropy-server-backpressure",
   "version": "1.0.0",
   "description": "This examples shows how to implement a custom Readable stream.",
   "main": "entropy-server.js",

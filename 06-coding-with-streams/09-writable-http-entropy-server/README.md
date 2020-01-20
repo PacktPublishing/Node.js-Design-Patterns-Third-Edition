@@ -1,4 +1,4 @@
-# 08-writable-http-entropy-server
+# 09-writable-http-entropy-server
 
 This examples shows how to write into a readable stream, specifically an HTTP response sent by a server.
 
