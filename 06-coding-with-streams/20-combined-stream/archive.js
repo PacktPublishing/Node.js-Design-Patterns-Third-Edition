@@ -4,7 +4,8 @@ import { createCompressAndEncrypt } from './combined-streams.js'
 
 const [,, password, source] = process.argv
 const archiveFile = createCompressAndEncrypt(password)
-const destination = `${source}-${archiveFile.iv.toString('hex')}.gz.enc`
+const iv = archiveFile.iv.toString('hex')
+const destination = `${source}.gz.enc`
 
 pipeline(
   createReadStream(source),
@@ -15,5 +16,6 @@ pipeline(
       console.error(err)
       process.exit(1)
     }
+    console.log(`${destination} created with iv: ${iv}`)
   }
 )
