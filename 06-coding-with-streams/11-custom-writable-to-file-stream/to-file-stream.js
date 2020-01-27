@@ -4,17 +4,14 @@ import { dirname } from 'path'
 import mkdirp from 'mkdirp-promise'
 
 export class ToFileStream extends Writable {
-  constructor (opts) {
-    super({ ...opts, objectMode: true })
+  constructor (options) {
+    super({ ...options, objectMode: true })
   }
 
-  async _write (chunk, encoding, cb) {
-    try {
-      await mkdirp(dirname(chunk.path))
-      await fs.writeFile(chunk.path, chunk.content)
-      cb()
-    } catch (err) {
-      cb(err)
-    }
+  _write (chunk, encoding, cb) {
+    mkdirp(dirname(chunk.path))
+      .then(() => fs.writeFile(chunk.path, chunk.content))
+      .then(() => cb())
+      .catch(cb)
   }
 }

@@ -1,14 +1,14 @@
 import { Transform } from 'stream'
 
 export class ReplaceStream extends Transform {
-  constructor (searchStr, replaceStr, opts) {
-    super({ ...opts, defaultEncoding: 'utf8' })
+  constructor (searchStr, replaceStr, options) {
+    super({ ...options })
     this.searchStr = searchStr
     this.replaceStr = replaceStr
     this.tail = ''
   }
 
-  _transform (chunk, encoding, cb) {
+  _transform (chunk, encoding, callback) {
     const pieces = (this.tail + chunk).split(this.searchStr)
     const lastPiece = pieces[pieces.length - 1]
     const tailLen = this.searchStr.length - 1
@@ -16,11 +16,11 @@ export class ReplaceStream extends Transform {
     pieces[pieces.length - 1] = lastPiece.slice(0, -tailLen)
 
     this.push(pieces.join(this.replaceStr))
-    cb()
+    callback()
   }
 
-  _flush (cb) {
+  _flush (callback) {
     this.push(this.tail)
-    cb()
+    callback()
   }
 }

@@ -5,14 +5,11 @@ import mkdirp from 'mkdirp-promise'
 
 const tfs = new Writable({
   objectMode: true,
-  async write (chunk, encoding, cb) {
-    try {
-      await mkdirp(dirname(chunk.path))
-      await fs.writeFile(chunk.path, chunk.content)
-      cb()
-    } catch (err) {
-      cb(err)
-    }
+  write (chunk, encoding, cb) {
+    mkdirp(dirname(chunk.path))
+      .then(() => fs.writeFile(chunk.path, chunk.content))
+      .then(() => cb())
+      .catch(cb)
   }
 })
 
