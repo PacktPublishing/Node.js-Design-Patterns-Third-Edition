@@ -10,7 +10,9 @@ pipeline(
   new LimitedParallelStream(
     4,
     async (url, enc, push, done) => {
-      if (!url) return done()
+      if (!url) {
+        return done()
+      }
       console.log(url)
       try {
         await request.head(url, { timeout: 5 * 1000 })

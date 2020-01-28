@@ -9,7 +9,9 @@ pipeline(
   split(), // ②
   new ParallelStream( // ③
     async (url, enc, push, done) => {
-      if (!url) return done()
+      if (!url) {
+        return done()
+      }
       try {
         await request.head(url, { timeout: 5 * 1000 })
         push(`${url} is up\n`)

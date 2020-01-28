@@ -2,7 +2,7 @@ import { Transform } from 'stream'
 
 export class ParallelStream extends Transform {
   constructor (userTransform, opts) {
-    super({ ...opts, objectMode: true })
+    super({ objectMode: true, ...opts })
     this.userTransform = userTransform
     this.running = 0
     this.terminateCb = null
