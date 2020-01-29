@@ -17,5 +17,5 @@ npm install
 To run the example:
 
 ```bash
-node archive <a_password> <path/to/a/file>
+node archive.js <a_password> <path/to/a/file>
 ```
