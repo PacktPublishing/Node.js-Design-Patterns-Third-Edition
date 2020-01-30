@@ -1,8 +1,8 @@
 import { ReplaceStream } from './replace-stream.js'
 
-const rs = new ReplaceStream('World', 'Node.js')
-rs.on('data', chunk => console.log(chunk.toString()))
+const replaceStream = new ReplaceStream('World', 'Node.js')
+replaceStream.on('data', chunk => console.log(chunk.toString()))
 
-rs.write('Hello W')
-rs.write('orld!')
-rs.end()
+replaceStream.write('Hello W')
+replaceStream.write('orld!')
+replaceStream.end()

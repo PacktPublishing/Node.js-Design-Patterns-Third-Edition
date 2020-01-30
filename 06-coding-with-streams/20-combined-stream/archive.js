@@ -1,21 +1,21 @@
 import { createReadStream, createWriteStream } from 'fs'
 import { pipeline } from 'stream'
+import { randomBytes } from 'crypto'
 import { createCompressAndEncrypt } from './combined-streams.js'
 
 const [,, password, source] = process.argv
-const archiveFile = createCompressAndEncrypt(password)
-const iv = archiveFile.iv.toString('hex')
+const iv = randomBytes(16)
 const destination = `${source}.gz.enc`
 
 pipeline(
   createReadStream(source),
-  archiveFile,
+  createCompressAndEncrypt(password, iv),
   createWriteStream(destination),
   (err) => {
     if (err) {
       console.error(err)
       process.exit(1)
     }
-    console.log(`${destination} created with iv: ${iv}`)
+    console.log(`${destination} created with iv: ${iv.toString('hex')}`)
   }
 )

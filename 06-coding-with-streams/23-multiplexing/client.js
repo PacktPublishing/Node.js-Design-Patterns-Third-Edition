@@ -2,7 +2,7 @@ import { fork } from 'child_process'
 import { connect } from 'net'
 
 function multiplexChannels (sources, destination) {
-  let totalChannels = sources.length
+  let openChannels = sources.length
   for (let i = 0; i < sources.length; i++) {
     sources[i]
       .on('readable', function () { // ①
@@ -17,7 +17,7 @@ function multiplexChannels (sources, destination) {
         }
       })
       .on('end', () => { // ④
-        if (--totalChannels === 0) {
+        if (--openChannels === 0) {
           destination.end()
         }
       })

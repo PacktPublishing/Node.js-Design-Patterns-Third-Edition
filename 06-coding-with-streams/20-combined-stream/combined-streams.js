@@ -1,14 +1,13 @@
 import { createGzip, createGunzip } from 'zlib'
-import { createCipheriv, createDecipheriv, randomBytes, scryptSync } from 'crypto'
+import { createCipheriv, createDecipheriv, scryptSync } from 'crypto'
 import pumpify from 'pumpify'
 
 function createKey (password) {
   return scryptSync(password, 'salt', 24)
 }
 
-export function createCompressAndEncrypt (password) {
+export function createCompressAndEncrypt (password, iv) {
   const key = createKey(password)
-  const iv = randomBytes(16)
   const combinedStream = pumpify(
     createGzip(),
     createCipheriv('aes192', key, iv)

@@ -4,7 +4,7 @@ const searchStr = 'World'
 const replaceStr = 'Node.js'
 let tail = ''
 
-const rs = new Transform({
+const replaceStream = new Transform({
   defaultEncoding: 'utf8',
 
   transform (chunk, encoding, cb) {
@@ -23,7 +23,7 @@ const rs = new Transform({
   }
 })
 
-rs.on('data', chunk => console.log(chunk.toString()))
-rs.write('Hello W')
-rs.write('orld!')
-rs.end()
+replaceStream.on('data', chunk => console.log(chunk.toString()))
+replaceStream.write('Hello W')
+replaceStream.write('orld!')
+replaceStream.end()

@@ -1,5 +1,5 @@
 {
-  "name": "14-passthrough-late-writing",
+  "name": "14-passthrough-late-piping",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.606.0"
+    "aws-sdk": "^2.606.0",
+    "axios": "^0.19.2"
   }
 }

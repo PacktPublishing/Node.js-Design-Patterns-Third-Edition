@@ -4,8 +4,8 @@ import Chance from 'chance'
 const chance = new Chance()
 
 export class RandomStream extends Readable {
-  constructor (opts) {
-    super(opts)
+  constructor (options) {
+    super(options)
     this.emittedBytes = 0
   }
 
