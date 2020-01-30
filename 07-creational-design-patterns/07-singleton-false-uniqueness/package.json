@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "echo 'npm install would overwrite the code samples in node_modules. Exiting.'; exit 1"
   },
   "dependencies": {}
 }
