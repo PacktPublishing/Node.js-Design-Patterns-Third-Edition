@@ -1,4 +1,4 @@
-# 14-passthrough-late-piping
+# 14-passthrough-late-piping-alternative
 
 This examples shows how to create and use a PassThrough stream for late writing.
 
