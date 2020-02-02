@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { PassThrough } from 'stream'
 
-export function uploadStream (filename) {
+export function createUploadStream (filename) {
   const connector = new PassThrough()
 
   axios
