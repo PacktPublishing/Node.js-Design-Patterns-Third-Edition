@@ -21,7 +21,7 @@ const noopProfiler = {
   end () {}
 }
 
-export function makeProfiler (label) {
+export function createProfiler (label) {
   if (process.env.NODE_ENV === 'production') {
     return noopProfiler
   }
