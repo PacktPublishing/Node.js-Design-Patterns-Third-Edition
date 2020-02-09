@@ -1,0 +1,13 @@
+{
+  "name": "03-proxy-object-augmentation",
+  "version": "1.0.0",
+  "description": "This example demonstrate how to create a proxy object using object augmentation (Monkey patching)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

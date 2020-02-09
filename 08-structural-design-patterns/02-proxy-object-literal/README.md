@@ -1,4 +1,4 @@
-# 01-proxy-composition
+# 02-proxy-object-literal
 
 This example demonstrate how to create a proxy object using object literals
 
