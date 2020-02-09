@@ -1,0 +1,13 @@
+{
+  "name": "02-proxy-object-literal",
+  "version": "1.0.0",
+  "description": "This example demonstrate how to create a proxy object literals",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
