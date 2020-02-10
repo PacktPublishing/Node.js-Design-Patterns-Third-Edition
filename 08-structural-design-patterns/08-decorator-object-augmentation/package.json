@@ -1,0 +1,13 @@
+{
+  "name": "08-decorator-object-augmentation",
+  "version": "1.0.0",
+  "description": "This example demonstrate how to implement the decorator pattern using object augmentation",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
