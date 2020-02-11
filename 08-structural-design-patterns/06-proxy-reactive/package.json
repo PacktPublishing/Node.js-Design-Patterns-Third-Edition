@@ -1,0 +1,13 @@
+{
+  "name": "06-proxy-reactive",
+  "version": "1.0.0",
+  "description": "This example demonstrate how to use reactive programming using the ES2015 Proxy",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

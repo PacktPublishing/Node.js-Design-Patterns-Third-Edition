@@ -1,0 +1,16 @@
+{
+  "name": "10-decorator-levelup-plugin",
+  "version": "1.0.0",
+  "description": "This examples shows how to use the decorator pattern to build a LevelUP plugin.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "level": "^6.0.0"
+  }
+}
