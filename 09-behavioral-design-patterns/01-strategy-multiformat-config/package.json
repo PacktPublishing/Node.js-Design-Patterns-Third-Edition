@@ -1,0 +1,13 @@
+{
+  "name": "01-strategy-multiformat-config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ini": "^1.3.5",
+    "object-path": "^0.11.4"
+  }
+}
