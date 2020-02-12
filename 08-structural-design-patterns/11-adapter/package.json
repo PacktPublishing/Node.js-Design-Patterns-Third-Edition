@@ -1,0 +1,16 @@
+{
+  "name": "11-adapter",
+  "version": "1.0.0",
+  "description": "This examples shows how to use the adapter pattern to build an FS-like interface that writes to level db instead",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "level": "^6.0.0"
+  }
+}
