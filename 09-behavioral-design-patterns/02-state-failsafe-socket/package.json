@@ -1,0 +1,12 @@
+{
+  "name": "02-state-failsafe-socket",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "json-over-tcp": "^0.3.2"
+  }
+}

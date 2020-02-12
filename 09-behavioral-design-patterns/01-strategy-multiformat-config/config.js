@@ -15,9 +15,11 @@ export class Config {
     return objectPath.set(this.data, configPath, value)
   }
 
-  async read (filePath) {
+  async load (filePath) {
     console.log(`Deserializing from ${filePath}`)
-    this.data = this.formatStrategy.deserialize(await fs.readFile(filePath, 'utf-8'))
+    this.data = this.formatStrategy.deserialize(
+      await fs.readFile(filePath, 'utf-8')
+    )
   }
 
   async save (filePath) {
