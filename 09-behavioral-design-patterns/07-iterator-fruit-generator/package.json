@@ -1,0 +1,10 @@
+{
+  "name": "07-iterator-fruit-generator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {}
+}
