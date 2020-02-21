@@ -7,6 +7,6 @@ This sample demonstrates how to use the Template pattern to create different con
 Install the necessary dependencies with `npm install` and then run:
 
 ```
-node main.js
+node index.js
 ```
 

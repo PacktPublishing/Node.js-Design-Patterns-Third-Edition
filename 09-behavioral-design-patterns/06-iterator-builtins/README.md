@@ -7,6 +7,6 @@ This sample demonstrates the different constructs and built-in APIs supporting i
 To run the example launch:
 
 ```
-node main.js
+node index.js
 ```
 

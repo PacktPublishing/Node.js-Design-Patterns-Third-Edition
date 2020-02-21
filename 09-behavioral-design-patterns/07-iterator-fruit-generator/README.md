@@ -7,6 +7,6 @@ This sample demonstrates how to create a simple generator function.
 To run the example launch:
 
 ```
-node main.js
+node index.js
 ```
 

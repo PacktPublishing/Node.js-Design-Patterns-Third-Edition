@@ -7,6 +7,6 @@ This sample demonstrates how to implement the Iterator protocol.
 To run the example launch:
 
 ```
-node main.js
+node index.js
 ```
 

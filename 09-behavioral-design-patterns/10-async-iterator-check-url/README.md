@@ -1,10 +1,10 @@
-# 09-iterator-matrix-generator
+# 10-async-iterator-check-url
 
 This sample demonstrates how to use a generator in place of a standard iterator.
 
 ## Run
 
-To run the example launch:
+To run the example install its dependencies with `npm install`, then launch:
 
 ```
 node index.js

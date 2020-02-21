@@ -7,6 +7,6 @@ This sample shows how to use the Strategy pattern to create a configuration mana
 Install the necessary dependencies with `npm install` and then run:
 
 ```bash
-node main.js
+node index.js
 ```
 
