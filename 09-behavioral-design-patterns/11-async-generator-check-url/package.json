@@ -1,0 +1,12 @@
+{
+  "name": "11-async-generator-check-url",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "superagent": "^5.2.2"
+  }
+}

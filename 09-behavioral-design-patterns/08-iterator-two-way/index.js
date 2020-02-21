@@ -1,13 +1,22 @@
 function * twoWayGenerator () {
-  const what = yield null
-  console.log('Hello ' + what)
+  try {
+    const what = yield null
+    yield 'Hello ' + what
+  } catch (err) {
+    yield 'Hello error: ' + err.message
+  }
 }
 
+console.log('Passing a value back to the generator:')
 const twoWay = twoWayGenerator()
 twoWay.next()
-twoWay.next('world')
+console.log(twoWay.next('world'))
 
-console.log('Throwing an exception:')
+console.log('throw():')
 const twoWayException = twoWayGenerator()
 twoWayException.next()
-twoWayException.throw(new Error())
+console.log(twoWayException.throw(new Error('Boom!')))
+
+console.log('return():')
+const twoWayReturn = twoWayGenerator()
+console.log(twoWayReturn.return('myReturnValue'))
