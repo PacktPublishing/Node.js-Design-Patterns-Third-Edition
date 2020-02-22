@@ -1,10 +1,6 @@
 export function decorate (component) {
   const proto = Object.getPrototypeOf(component)
-
-  function Decorator (component) {
-    this.component = component
-  }
-
+  function Decorator () {}
   Decorator.prototype = Object.create(proto)
 
   // new method
@@ -13,8 +9,8 @@ export function decorate (component) {
   }
 
   // delegated method
-  Decorator.prototype.hello = function () {
-    return this.component.hello.apply(this.component, arguments)
+  Decorator.prototype.hello = function (...args) {
+    return component.hello(...args)
   }
 
   return new Decorator(component)
