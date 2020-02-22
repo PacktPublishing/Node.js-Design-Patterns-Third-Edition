@@ -1,22 +1,19 @@
 export function createProxy (subject) {
   const proto = Object.getPrototypeOf(subject)
 
-  function ProxyObj (subject) {
-    this.subject = subject
-  }
+  function ProxyObj () {}
 
   ProxyObj.prototype = Object.create(proto)
 
   // proxied method
   ProxyObj.prototype.hello = function () {
-    return `${this.subject.hello()} world!`
+    return `${subject.hello()} world!`
   }
 
   // delegated method
-  ProxyObj.prototype.goodbye = function () {
-    return this.subject.goodbye
-      .apply(this.subject, arguments)
+  ProxyObj.prototype.goodbye = function (...args) {
+    return subject.goodbye(...args)
   }
 
-  return new ProxyObj(subject)
+  return new ProxyObj()
 }

@@ -1,9 +1,13 @@
 export function createProxy (subject) {
   return {
     // proxied method
-    hello: () => (subject.hello() + ' world!'),
+    hello () {
+      return `${subject.hello()} world!`
+    },
 
     // delegated method
-    goodbye: () => (subject.goodbye.apply(subject, arguments))
+    goodbye (...args) {
+      return subject.goodbye(...args)
+    }
   }
 }
