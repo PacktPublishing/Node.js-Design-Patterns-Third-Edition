@@ -8,8 +8,10 @@ const scientist = {
 
 const uppercaseScientist = new Proxy(scientist, {
   get: (target, property) => {
-    if (target[property].toUpperCase) {
-      return target[property].toUpperCase()
+    if (property === 'fullName') {
+      return function () {
+        return `${this.name.toUpperCase()} ${this.surname.toUpperCase()}`
+      }
     }
 
     return target[property]
