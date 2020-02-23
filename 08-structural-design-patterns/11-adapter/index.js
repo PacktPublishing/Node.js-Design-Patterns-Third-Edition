@@ -4,7 +4,9 @@ import level from 'level'
 import { createFSAdapter } from './fs-adapter.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const db = level(join(__dirname, 'db'), { valueEncoding: 'binary' })
+const db = level(join(__dirname, 'db'), {
+  valueEncoding: 'binary'
+})
 const fs = createFSAdapter(db)
 
 fs.writeFile('file.txt', 'Hello!', () => {

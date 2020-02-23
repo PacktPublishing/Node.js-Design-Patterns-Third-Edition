@@ -3,13 +3,13 @@ import { createObservable } from './create-observable.js'
 function calculateTotal (invoice) { // ①
   return invoice.subtotal -
     invoice.discount +
-    invoice.vat
+    invoice.tax
 }
 
 const invoice = {
   subtotal: 100,
   discount: 10,
-  vat: 20
+  tax: 20
 }
 let total = calculateTotal(invoice)
 console.log(`Starting total: ${total}`)
@@ -25,7 +25,7 @@ const obsInvoice = createObservable( // ②
 // ③
 obsInvoice.subtotal = 200 // TOTAL: 210
 obsInvoice.discount = 20 // TOTAL: 200
-obsInvoice.discount = 20 // no change: doesn't trigger the observer
-obsInvoice.vat = 30 // TOTAL: 210
+obsInvoice.discount = 20 // no change: doesn't notify
+obsInvoice.tax = 30 // TOTAL: 210
 
 console.log(`Final total: ${total}`)

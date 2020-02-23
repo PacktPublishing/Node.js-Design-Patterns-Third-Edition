@@ -2,9 +2,9 @@ import { resolve } from 'path'
 
 export function createFSAdapter (db) {
   return ({
-    readFile (filename, options, cb) {
+    readFile (filename, options, callback) {
       if (typeof options === 'function') {
-        cb = options
+        callback = options
         options = {}
       } else if (typeof options === 'string') {
         options = { encoding: options }
@@ -21,15 +21,15 @@ export function createFSAdapter (db) {
             err.errno = 34
             err.path = filename
           }
-          return cb && cb(err)
+          return callback && callback(err)
         }
-        cb && cb(null, value) // ③
+        callback && callback(null, value) // ③
       })
     },
 
-    writeFile (filename, contents, options, cb) {
+    writeFile (filename, contents, options, callback) {
       if (typeof options === 'function') {
-        cb = options
+        callback = options
         options = {}
       } else if (typeof options === 'string') {
         options = { encoding: options }
@@ -37,7 +37,7 @@ export function createFSAdapter (db) {
 
       db.put(resolve(filename), contents, {
         valueEncoding: options.encoding
-      }, cb)
+      }, callback)
     }
   })
 }
