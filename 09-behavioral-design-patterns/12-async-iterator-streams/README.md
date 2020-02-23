@@ -9,4 +9,3 @@ To run the example install its dependencies with `npm install`, then launch:
 ```
 node index.js
 ```
-
