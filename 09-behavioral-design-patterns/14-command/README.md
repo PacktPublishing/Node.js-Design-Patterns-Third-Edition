@@ -1,6 +1,6 @@
-# 13-middleware-zmq
+# 14-command
 
-This sample demonstrates how to build a middleware infrastructure for ZMQ.
+This sample demonstrates a simple implementation of the Command pattern.
 
 ## Run
 
@@ -15,5 +15,3 @@ And then:
 ```
 node client.js
 ```
-
-
