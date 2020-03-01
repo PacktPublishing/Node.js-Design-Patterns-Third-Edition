@@ -20,9 +20,9 @@ const posts = [
     created_at: new Date('2020-02-29')
   }
   // ...
-];
+]
 
-(async () => {
+async function main () {
   await Promise.all(
     posts.map(
       (post) => createPost(
@@ -34,4 +34,6 @@ const posts = [
     )
   )
   console.log('All posts imported')
-})()
+}
+
+main()

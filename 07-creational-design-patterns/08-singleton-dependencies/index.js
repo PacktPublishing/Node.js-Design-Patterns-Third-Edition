@@ -1,6 +1,6 @@
 import { getAllPosts } from './blog.js'
 
-(async () => {
+async function main () {
   const posts = await getAllPosts()
   if (posts.length === 0) {
     console.log('No post available. Run `node import-posts.js` to load some sample posts')
@@ -17,4 +17,6 @@ ${post.content}
 `
     )
   })
-})()
+}
+
+main()
