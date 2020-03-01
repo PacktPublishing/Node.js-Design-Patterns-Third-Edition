@@ -1,7 +1,7 @@
 const A_CHAR_CODE = 65
 const Z_CHAR_CODE = 90
 
-function makeAlphabetIterator () {
+function createAlphabetIterator () {
   let currCode = A_CHAR_CODE
 
   return {
@@ -17,7 +17,7 @@ function makeAlphabetIterator () {
   }
 }
 
-const iterator = makeAlphabetIterator()
+const iterator = createAlphabetIterator()
 let iterationResult = iterator.next()
 while (!iterationResult.done) {
   console.log(iterationResult.value)

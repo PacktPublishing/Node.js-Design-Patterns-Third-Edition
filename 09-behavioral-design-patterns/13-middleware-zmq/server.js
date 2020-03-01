@@ -3,7 +3,7 @@ import { ZmqMiddlewareManager } from './zmqMiddlewareManager.js'
 import { jsonMiddleware } from './jsonMiddleware.js'
 import { zlibMiddleware } from './zlibMiddleware.js'
 
-(async () => {
+async function main () {
   const socket = new zeromq.Reply()
   await socket.bind('tcp://127.0.0.1:5000')
 
@@ -21,4 +21,6 @@ import { zlibMiddleware } from './zlibMiddleware.js'
   })
 
   console.log('Server started')
-})()
+}
+
+main()

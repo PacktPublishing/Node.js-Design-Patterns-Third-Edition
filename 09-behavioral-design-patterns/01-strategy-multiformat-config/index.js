@@ -1,7 +1,7 @@
 import { Config } from './config.js'
 import { jsonStrategy, iniStrategy } from './strategies.js'
 
-(async function () {
+async function main () {
   const iniConfig = new Config(iniStrategy)
   await iniConfig.load('samples/conf.ini')
   iniConfig.set('book.nodejs', 'design patterns')
@@ -11,4 +11,6 @@ import { jsonStrategy, iniStrategy } from './strategies.js'
   await jsonConfig.load('samples/conf.json')
   jsonConfig.set('book.nodejs', 'design patterns')
   await jsonConfig.save('samples/conf_mod.json')
-})()
+}
+
+main()

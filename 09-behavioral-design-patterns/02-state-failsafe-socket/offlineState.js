@@ -1,4 +1,4 @@
-import jot from 'json-over-tcp'
+import jsonOverTcp from 'json-over-tcp-2'
 
 export class OfflineState {
   constructor (failsafeSocket) {
@@ -15,7 +15,7 @@ export class OfflineState {
     }
 
     console.log('Trying to connect...')
-    this.failsafeSocket.socket = jot.connect(
+    this.failsafeSocket.socket = jsonOverTcp.connect(
       this.failsafeSocket.options,
       () => {
         console.log('Connection established')

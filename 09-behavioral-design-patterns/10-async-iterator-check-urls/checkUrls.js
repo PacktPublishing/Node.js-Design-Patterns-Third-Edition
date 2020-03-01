@@ -1,6 +1,6 @@
 import superagent from 'superagent'
 
-export class CheckUrl {
+export class CheckUrls {
   constructor (urls) {
     this.urls = urls
   }

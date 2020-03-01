@@ -1,15 +1,15 @@
-import { promises as frPromises } from 'fs'
+import { promises as fsPromises } from 'fs'
 import objectPath from 'object-path'
 
 export class ConfigTemplate {
   async load (file) {
     console.log(`Deserializing from ${file}`)
-    this.data = this._deserialize(await frPromises.readFile(file, 'utf-8'))
+    this.data = this._deserialize(await fsPromises.readFile(file, 'utf-8'))
   }
 
   async save (file) {
     console.log(`Serializing to ${file}`)
-    await frPromises.writeFile(file, this._serialize(this.data))
+    await fsPromises.writeFile(file, this._serialize(this.data))
   }
 
   get (path) {

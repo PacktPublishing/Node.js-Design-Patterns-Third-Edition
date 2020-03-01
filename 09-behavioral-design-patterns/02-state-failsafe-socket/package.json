@@ -7,6 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "json-over-tcp": "^0.3.2"
+    "json-over-tcp-2": "^0.3.5"
   }
 }
