@@ -7,7 +7,7 @@ const initQuery = `CREATE TABLE IF NOT EXISTS posts (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );`
 
-export function makeDb (dbPath) {
+export function createDb (dbPath) {
   return new Promise((resolve, reject) => {
     const dbInstance = new sqlite3.Database(dbPath)
     dbInstance.run(initQuery, (err) => {
