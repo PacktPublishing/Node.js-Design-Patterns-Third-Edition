@@ -1,6 +1,6 @@
 # 09-dependency-injection
 
-This example shows how to wire dependencies using the singleton pattern
+This example shows how to wire dependencies using the dependency injection pattern
 
 ## Dependencies
 
