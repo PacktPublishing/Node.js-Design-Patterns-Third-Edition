@@ -6,13 +6,13 @@ class DB extends EventEmitter {
   connect () {
     // simulate the delay of the connection
     setTimeout(() => {
-      db.connected = true
+      this.connected = true
       this.emit('connected')
     }, 500)
   }
 
   async query (queryString) {
-    if (!db.connected) {
+    if (!this.connected) {
       throw new Error('Not connected yet')
     }
     console.log(`Query executed: ${queryString}`)
