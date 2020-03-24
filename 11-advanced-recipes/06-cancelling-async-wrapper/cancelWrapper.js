@@ -1,0 +1,18 @@
+import { CancelError } from './cancelError.js'
+
+export function createCancelWrapper () {
+  let cancelRequested = false
+
+  function cancel () {
+    cancelRequested = true
+  }
+
+  function cancelWrapper (foo, ...args) {
+    if (cancelRequested) {
+      return Promise.reject(new CancelError())
+    }
+    return foo(...args)
+  }
+
+  return { cancelWrapper, cancel }
+}
