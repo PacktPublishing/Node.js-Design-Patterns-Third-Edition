@@ -7,11 +7,11 @@ export function createCancelWrapper () {
     cancelRequested = true
   }
 
-  function cancelWrapper (foo, ...args) {
+  function cancelWrapper (func, ...args) {
     if (cancelRequested) {
       return Promise.reject(new CancelError())
     }
-    return foo(...args)
+    return func(...args)
   }
 
   return { cancelWrapper, cancel }

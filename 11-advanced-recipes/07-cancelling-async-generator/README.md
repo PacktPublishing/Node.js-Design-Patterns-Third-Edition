@@ -4,7 +4,7 @@ This sample demonstrates it's possible to seamlessly create asynchronous cancell
 
 ## Run
 
-To run the example launch:
+To run the example launch: 
 
 ```
 node index.js

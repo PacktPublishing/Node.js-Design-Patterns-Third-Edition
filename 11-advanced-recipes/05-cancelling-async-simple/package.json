@@ -1,5 +1,5 @@
 {
-  "name": "05-cancel-async-simple",
+  "name": "05-cancelling-async-simple",
   "version": "1.0.0",
   "private": true,
   "type": "module",

@@ -1,6 +1,6 @@
 import { CancelError } from './cancelError.js'
 
-export function asyncCancelable (generatorFunction) {
+export function asyncCancellable (generatorFunction) {
   return function (...args) {
     const generatorObject = generatorFunction(...args)
     let cancelRequested = false
