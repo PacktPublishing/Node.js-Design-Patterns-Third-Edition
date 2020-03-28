@@ -6,6 +6,6 @@ This sample demonstrates it's possible to seamlessly create asynchronous cancela
 
 To run the example launch: 
 
-```
+```shell script
 node index.js
 ```
