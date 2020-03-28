@@ -1,4 +1,4 @@
-# 05-cancelling-async-simple
+# 05-canceling-async-simple
 
 This sample demonstrates how to cancel an async function by using a simple variable.
 

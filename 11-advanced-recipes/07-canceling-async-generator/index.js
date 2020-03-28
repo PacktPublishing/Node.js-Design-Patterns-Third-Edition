@@ -1,8 +1,8 @@
 import { asyncRoutine } from './asyncRoutine.js'
-import { asyncCancellable } from './asyncCancellable.js'
+import { createAsyncCancelable } from './createAsyncCancelable.js'
 import { CancelError } from './cancelError.js'
 
-const cancellable = asyncCancellable(function * () {
+const cancelable = createAsyncCancelable(function * () {
   const resA = yield asyncRoutine('A')
   console.log(resA)
   const resB = yield asyncRoutine('B')
@@ -11,10 +11,12 @@ const cancellable = asyncCancellable(function * () {
   console.log(resC)
 })
 
-const { promise, cancel } = cancellable()
+const { promise, cancel } = cancelable()
 promise.catch(err => {
   if (err instanceof CancelError) {
     console.log('Function canceled')
+  } else {
+    console.error(err)
   }
 })
 

@@ -1,5 +1,5 @@
 {
-  "name": "06-cancelling-async-wrapper",
+  "name": "07-canceling-async-generator",
   "version": "1.0.0",
   "private": true,
   "type": "module",

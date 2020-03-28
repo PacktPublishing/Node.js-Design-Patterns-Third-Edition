@@ -1,7 +1,7 @@
 import { asyncRoutine } from './asyncRoutine.js'
 import { CancelError } from './cancelError.js'
 
-async function cancellable (cancelObj) {
+async function cancelable (cancelObj) {
   const resA = await asyncRoutine('A')
   console.log(resA)
   if (cancelObj.cancelRequested) {
@@ -19,10 +19,12 @@ async function cancellable (cancelObj) {
 }
 
 const cancelObj = { cancelRequested: false }
-cancellable(cancelObj)
+cancelable(cancelObj)
   .catch(err => {
     if (err instanceof CancelError) {
       console.log('Function canceled')
+    } else {
+      console.error(err)
     }
   })
 
