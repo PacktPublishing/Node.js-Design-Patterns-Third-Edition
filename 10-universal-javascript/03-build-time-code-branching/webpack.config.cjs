@@ -89,7 +89,6 @@ module.exports = {
         },
         compress: {
           dead_code: true,
-          // if: true,
           if_return: true
         }
       }
