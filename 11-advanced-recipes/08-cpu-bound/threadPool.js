@@ -35,8 +35,8 @@ class ProcessPool {
 
   release (worker) {
     if (this.waiting.length > 0) {
-      const { resolve } = this.waiting.shift()
-      return resolve(worker)
+      const { waitingResolve } = this.waiting.shift()
+      return waitingResolve(worker)
     }
     this.active = this.active.filter(w => worker !== w)
     this.pool.push(worker)
