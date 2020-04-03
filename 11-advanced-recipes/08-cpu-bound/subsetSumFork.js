@@ -4,7 +4,9 @@ import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const workers = new ProcessPool(join(__dirname, 'workers/processWorker.js'), 2)
+const workerFile = join(__dirname,
+  'workers/subsetSumProcessWorker.js')
+const workers = new ProcessPool(workerFile, 2)
 
 export class SubsetSum extends EventEmitter {
   constructor (sum, set) {

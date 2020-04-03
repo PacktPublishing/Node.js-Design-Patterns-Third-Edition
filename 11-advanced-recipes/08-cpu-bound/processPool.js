@@ -1,6 +1,6 @@
 import { fork } from 'child_process'
 
-class ProcessPool {
+export class ProcessPool {
   constructor (file, poolMax) {
     this.file = file
     this.poolMax = poolMax
@@ -23,13 +23,19 @@ class ProcessPool {
       }
 
       worker = fork(this.file)
+      worker.once('message', message => {
+        if (message === 'ready') {
+          this.active.push(worker)
+          return resolve(worker)
+        }
+        worker.kill()
+        reject(new Error('Improper process start'))
+      })
       worker.once('exit', code => {
         console.log(`Worker exited with code ${code}`)
         this.active = this.active.filter(w => worker !== w)
         this.pool = this.active.filter(w => worker !== w)
       })
-      this.active.push(worker)
-      resolve(worker)
     })
   }
 
@@ -42,5 +48,3 @@ class ProcessPool {
     this.pool.push(worker)
   }
 }
-
-module.exports = ProcessPool
