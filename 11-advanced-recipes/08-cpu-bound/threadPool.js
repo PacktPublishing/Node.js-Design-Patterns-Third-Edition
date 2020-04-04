@@ -1,6 +1,6 @@
-import { fork } from 'child_process'
+import { Worker } from 'worker_threads'
 
-export class ProcessPool {
+export class ThreadPool {
   constructor (file, poolMax) {
     this.file = file
     this.poolMax = poolMax
@@ -22,14 +22,10 @@ export class ProcessPool {
         return this.waiting.push({ resolve, reject })
       }
 
-      worker = fork(this.file)
-      worker.once('message', message => {
-        if (message === 'ready') {
-          this.active.push(worker)
-          return resolve(worker)
-        }
-        worker.kill()
-        reject(new Error('Improper process start'))
+      worker = new Worker(this.file)
+      worker.once('online', message => {
+        this.active.push(worker)
+        return resolve(worker)
       })
       worker.once('exit', code => {
         console.log(`Worker exited with code ${code}`)
