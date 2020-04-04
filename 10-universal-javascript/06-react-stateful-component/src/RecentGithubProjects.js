@@ -1,26 +1,30 @@
 import react from 'react'
 
 const h = react.createElement
+const REQUEST_URI = 'https://api.github.com/search/repositories?q=javascript&sort=updated'
 
 export class RecentGithubProjects extends react.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
+  constructor (props) { // ①
+    super(props) // ②
+    this.state = { // ③
       loading: true,
       projects: []
     }
   }
 
-  async componentDidMount () {
+  async componentDidMount () { // ④
     const response = await fetch(
-      'https://api.github.com/search/repositories?q=javascript&sort=updated',
+      REQUEST_URI,
       { mode: 'cors' }
     )
     const projects = await response.json()
-    this.setState({ projects: projects.items, loading: false })
+    this.setState({
+      projects: projects.items,
+      loading: false
+    })
   }
 
-  render () {
+  render () { // ⑤
     if (this.state.loading) {
       return 'Loading ...'
     }
