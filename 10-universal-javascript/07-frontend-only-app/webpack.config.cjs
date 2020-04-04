@@ -31,7 +31,8 @@ module.exports = function (env, argv) {
     devServer: {
       historyApiFallback: true,
       contentBase: join(__dirname, 'public'),
-      contentBasePublicPath: '/public'
+      contentBasePublicPath: '/public',
+      open: true
     },
     optimization: isProd ? {
       minimize: true,
