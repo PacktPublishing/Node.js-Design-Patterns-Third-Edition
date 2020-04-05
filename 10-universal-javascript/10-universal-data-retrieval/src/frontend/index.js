@@ -5,7 +5,7 @@ import { App } from './App.js'
 
 const h = react.createElement
 
-reactDOM.render(
+reactDOM.hydrate(
   h(BrowserRouter, {},
     h(App)
   ),
