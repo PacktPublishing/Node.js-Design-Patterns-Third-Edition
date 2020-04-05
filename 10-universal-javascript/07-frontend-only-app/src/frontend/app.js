@@ -9,9 +9,19 @@ const h = react.createElement
 export class App extends react.Component {
   render () {
     return h(Switch, null,
-      h(Route, { path: '/', exact: true, component: AuthorsIndex }),
-      h(Route, { path: '/author/:authorId', component: Author }),
-      h(Route, { path: '*', component: FourOhFour })
+      h(Route, {
+        path: '/',
+        exact: true,
+        component: AuthorsIndex
+      }),
+      h(Route, {
+        path: '/author/:authorId',
+        component: Author
+      }),
+      h(Route, {
+        path: '*',
+        component: FourOhFour
+      })
     )
   }
 }

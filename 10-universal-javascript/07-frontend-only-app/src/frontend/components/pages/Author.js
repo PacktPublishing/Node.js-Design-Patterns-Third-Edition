@@ -8,7 +8,9 @@ const h = react.createElement
 export class Author extends react.Component {
   constructor (props) {
     super(props)
-    const author = authors.find(author => author.id === props.match.params.authorId)
+    const author = authors.find(
+      author => author.id === props.match.params.authorId
+    )
     this.state = {
       author
     }
