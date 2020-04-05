@@ -1,6 +1,6 @@
 # 09-asynchronous-data-retrieval
 
-This example demostrates how to evolve our frontend only app and add server side rendering.
+This example demostrates how to move the data into a dedicated api server and fetch it asynchronously from the frontend.
 
 ## Dependencies
 

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.cjs --mode production",
-    "start": "npm run build && node -r esm src/server.js"
+    "start:api": "node -r esm ./src/api.js",
+    "start:server": "node -r esm ./src/server.js",
+    "start": "npm run build && concurrently \"npm run start:api\" \"npm run start:server\""
   },
   "keywords": [],
   "author": "",
@@ -16,6 +18,7 @@
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "babel-loader": "^8.1.0",
+    "concurrently": "^5.1.0",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-root-plugin": "^0.10.0",
     "terser-webpack-plugin": "^2.3.5",
