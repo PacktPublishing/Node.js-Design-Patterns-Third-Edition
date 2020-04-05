@@ -9,8 +9,8 @@ import { App } from './frontend/App.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const h = react.createElement
-const server = fastify({ logger: true })
 
+// ①
 const template = ({ content }) => `<!DOCTYPE html>
 <html>
   <head>
@@ -23,16 +23,21 @@ const template = ({ content }) => `<!DOCTYPE html>
   </body>
 </html>`
 
-server.register(fastifyStatic, {
+const server = fastify({ logger: true }) // ②
+
+server.register(fastifyStatic, { // ③
   root: resolve(__dirname, '..', 'public'),
   prefix: '/public/'
 })
 
-server.get('*', async (req, reply) => {
+server.get('*', async (req, reply) => { // ④
   const location = req.raw.originalUrl
   const staticContext = {}
-  const serverApp = h(StaticRouter, { location, context: staticContext }, h(App))
-  const content = reactServer.renderToString(serverApp)
+  const serverApp = h(StaticRouter, // ⑤
+    { location, context: staticContext },
+    h(App)
+  )
+  const content = reactServer.renderToString(serverApp) // ⑥
   const html = template({ content })
 
   let code = 200
@@ -43,10 +48,10 @@ server.get('*', async (req, reply) => {
   reply.code(code).type('text/html').send(html)
 })
 
-const port = Number.parseInt(process.env.PORT) || 3000
+const port = Number.parseInt(process.env.PORT) || 3000 // ⑦
 const address = process.env.ADDRESS || '127.0.0.1'
 
-server.listen(port, address, function (err, addr) {
+server.listen(port, address, function (err) {
   if (err) {
     console.error(err)
     process.exit(1)
