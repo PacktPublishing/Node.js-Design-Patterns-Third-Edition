@@ -1,25 +1,15 @@
 import react from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { AsyncPage } from './AsyncPage.js'
 import { Header } from '../Header.js'
 
 const h = react.createElement
 
-export class AuthorsIndex extends react.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      authors: [],
-      loading: true
-    }
-  }
-
-  async componentDidMount () {
+export class AuthorsIndex extends AsyncPage {
+  static async preloadAsyncData (props) {
     const { data } = await axios.get('http://localhost:3001/api/authors')
-    this.setState({
-      loading: false,
-      authors: data
-    })
+    return { authors: data }
   }
 
   render () {

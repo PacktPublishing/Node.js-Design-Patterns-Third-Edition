@@ -20,7 +20,7 @@ export class AuthorsIndex extends react.Component {
         h('h2', null, 'Authors'),
         h('div', null,
           this.state.authors.map(
-            (author) => h('div', { key: author.id, className: 'col text-center' },
+            (author) => h('div', { key: author.id },
               h(Link, { to: `/author/${author.id}` },
                 h('p', null, author.name)
               )
