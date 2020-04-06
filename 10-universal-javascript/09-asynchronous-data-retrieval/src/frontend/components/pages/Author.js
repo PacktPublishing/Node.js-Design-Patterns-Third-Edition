@@ -15,10 +15,14 @@ export class Author extends react.Component {
   }
 
   async componentDidMount () {
-    const { data } = await axios.get(`http://localhost:3001/api/author/${this.props.match.params.authorId}`)
+    let author = null
+    try {
+      const { data } = await axios.get(`http://localhost:3001/api/author/${this.props.match.params.authorId}`)
+      author = data
+    } catch (e) {}
     this.setState({
       loading: false,
-      author: data
+      author
     })
   }
 

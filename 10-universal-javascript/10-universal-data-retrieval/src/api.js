@@ -7,7 +7,7 @@ const server = fastify({ logger: true })
 server.register(fastifyCors, { origin: true })
 
 server.get('/api/authors', async function (req, reply) {
-  return authors.map(({ id, name, picture }) => ({ id, name, picture }))
+  return authors.map(({ id, name }) => ({ id, name }))
 })
 
 server.get('/api/author/:authorId', async function (req, reply) {
@@ -22,7 +22,7 @@ server.get('/api/author/:authorId', async function (req, reply) {
 const port = Number.parseInt(process.env.PORT) || 3001
 const address = process.env.ADDRESS || '127.0.0.1'
 
-server.listen(port, address, function (err, addr) {
+server.listen(port, address, function (err) {
   if (err) {
     console.error(err)
     process.exit(1)
