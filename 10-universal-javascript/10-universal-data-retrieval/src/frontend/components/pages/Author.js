@@ -6,19 +6,10 @@ import { Header } from '../Header.js'
 
 const h = react.createElement
 
-class AuthorNotFoundAuthor extends Error {}
-
 export class Author extends AsyncPage {
   static async preloadAsyncData (props) {
-    try {
-      const { data } = await axios.get(`http://localhost:3001/api/author/${props.match.params.authorId}`)
-      return { author: data }
-    } catch (err) {
-      if (err.response.status === 404) {
-        throw new AuthorNotFoundAuthor()
-      }
-      throw err
-    }
+    const { data } = await axios.get(`http://localhost:3001/api/author/${props.match.params.authorId}`)
+    return { author: data }
   }
 
   render () {

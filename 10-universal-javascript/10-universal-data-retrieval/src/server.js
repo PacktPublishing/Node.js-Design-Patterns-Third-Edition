@@ -20,7 +20,9 @@ const template = ({ content, serverData }) => `<!DOCTYPE html>
   </head>
   <body>
     <div id="root">${content}</div>
-    ${serverData ? `<script type="text/javascript">${serverData}</script>` : ''}
+    ${serverData ? `<script type="text/javascript">
+window.__STATIC_CONTEXT__=${JSON.stringify(serverData)}
+    </script>` : ''}
     <script type="text/javascript" src="/public/main.js"></script>
   </body>
 </html>`
@@ -34,19 +36,12 @@ server.get('*', async (req, reply) => {
   const location = req.raw.originalUrl
   let component
   let match
-  let matched = false
   for (const route of routes) {
     component = route.component
     match = matchPath(location, route)
     if (match) {
-      matched = true
       break
     }
-  }
-
-  let code = 200
-  if (!matched) {
-    code = 404
   }
 
   let staticData
@@ -65,13 +60,12 @@ server.get('*', async (req, reply) => {
   const staticContext = { [location]: { data: staticData, err: staticError } }
   const app = h(StaticRouter, { location, context: staticContext }, h(App))
   const content = reactServer.renderToString(app)
-  const serverData = hasStaticContext ? `window.__STATIC_CONTEXT__=${JSON.stringify(staticContext)}` : ''
+  const serverData = hasStaticContext ? staticContext : null
   const html = template({ content, serverData })
 
-  if (staticContext.statusCode) {
-    code = staticContext.statusCode
-  }
-
+  const code = staticContext.statusCode
+    ? staticContext.statusCode
+    : 200
   reply.code(code).type('text/html').send(html)
 })
 

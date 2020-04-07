@@ -1,7 +1,11 @@
 import react from 'react'
 
 export class AsyncPage extends react.Component {
-  static async preloadAsyncData () {
+  static async preloadAsyncData (props) {
+    throw new Error('Must be implemented by sub class')
+  }
+
+  render () {
     throw new Error('Must be implemented by sub class')
   }
 
@@ -44,9 +48,5 @@ export class AsyncPage extends react.Component {
       }
       this.setState({ ...staticData, loading: false, staticError })
     }
-  }
-
-  render () {
-    throw new Error('Must implemented by sub class')
   }
 }
