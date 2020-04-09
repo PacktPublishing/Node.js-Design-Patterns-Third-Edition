@@ -15,11 +15,11 @@ class QueuingState {
     this.commandsQueue = []
 
     METHODS_NEEDING_CONNECTION.forEach(methodName => {
-      this[methodName] = function () {
+      this[methodName] = function (...args) {
         console.log('Command queued:', methodName, arguments)
         return new Promise((resolve, reject) => {
           const command = () => {
-            db[methodName].apply(db, arguments)
+            db[methodName](...args)
               .then(resolve, reject)
           }
           this.commandsQueue.push(command)

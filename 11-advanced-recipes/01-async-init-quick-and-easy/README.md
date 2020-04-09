@@ -7,11 +7,11 @@ This sample demonstrates some simple solutions to the problem of asynchronously 
 To run the first part of the example, launch:
 
 ```
-node withInitializationCheck.js
+node localInitializationCheck.js
 ```
 
 To run the second part of the example, launch:
 
 ```
-node client.js
+node delayedStartup.js
 ```

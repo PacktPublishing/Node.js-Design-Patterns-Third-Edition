@@ -30,7 +30,7 @@ export class ThreadPool {
       worker.once('exit', code => {
         console.log(`Worker exited with code ${code}`)
         this.active = this.active.filter(w => worker !== w)
-        this.pool = this.active.filter(w => worker !== w)
+        this.pool = this.pool.filter(w => worker !== w)
       })
     })
   }

@@ -6,12 +6,11 @@ class DB extends EventEmitter {
 
   async query (queryString) {
     if (!this.connected) {
-      const args = arguments
       console.log(`Request queued: ${queryString}`)
 
       return new Promise((resolve, reject) => {
         const command = () => {
-          this.query.apply(this, args)
+          this.query(queryString)
             .then(resolve, reject)
         }
         this.commandsQueue.push(command)

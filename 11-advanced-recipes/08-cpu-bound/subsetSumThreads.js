@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const workerFile = join(__dirname,
-  'workers/subsetSumThreadWorker.js')
+  'workers', 'subsetSumThreadWorker.js')
 const workers = new ThreadPool(workerFile, 2)
 
 export class SubsetSum extends EventEmitter {

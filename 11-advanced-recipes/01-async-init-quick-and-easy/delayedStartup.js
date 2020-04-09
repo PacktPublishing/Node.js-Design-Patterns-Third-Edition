@@ -1,11 +1,9 @@
 import { db } from './db.js'
+import { once } from 'events'
 
 async function initialize () {
   db.connect()
-
-  await new Promise((resolve) => {
-    db.once('connected', resolve)
-  })
+  await once(db, 'connected')
 }
 
 async function updateLastAccess () {
