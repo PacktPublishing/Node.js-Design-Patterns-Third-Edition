@@ -1,15 +1,16 @@
 import react from 'react'
+import htm from 'htm'
 import { Switch, Route } from 'react-router-dom'
 import { routes } from './routes.js'
 
-const h = react.createElement
+const html = htm.bind(react.createElement)
 
 export class App extends react.Component {
   render () {
-    return h(Switch, null,
-      routes.map(routeConfig =>
-        h(Route, { key: routeConfig.path, ...routeConfig })
-      )
-    )
+    return html`<${Switch}>
+      ${routes.map(routeConfig =>
+        html`<${Route} key=${routeConfig.path} ...${routeConfig}/>`
+      )}
+    </>`
   }
 }

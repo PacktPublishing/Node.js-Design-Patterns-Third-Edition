@@ -1,19 +1,11 @@
 import react from 'react'
 import ReactDOM from 'react-dom'
-import { RecentGithubProjects } from './RecentGithubProjects.js'
+import htm from 'htm'
+import { App } from './App.js'
 
-const h = react.createElement
-
-class App extends react.Component {
-  render () {
-    return h('div', null,
-      h('h1', null, 'Recently updated JS projects'),
-      h(RecentGithubProjects)
-    )
-  }
-}
+const html = htm.bind(react.createElement)
 
 ReactDOM.render(
-  h(App),
+  html`<${App}/>`,
   document.getElementsByTagName('body')[0]
 )

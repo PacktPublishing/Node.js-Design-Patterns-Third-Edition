@@ -1,26 +1,22 @@
 import react from 'react'
+import htm from 'htm'
 import { Link } from 'react-router-dom'
 import { Header } from '../Header.js'
 import { authors } from '../../../data/authors.js'
 
-const h = react.createElement
+const html = htm.bind(react.createElement)
 
 export class AuthorsIndex extends react.Component {
   render () {
-    return h('div', null,
-      h(Header),
-      h('div', null,
-        h('h2', null, 'Authors'),
-        h('div', null,
-          authors.map(
-            (author) => h('div', { key: author.id },
-              h(Link, { to: `/author/${author.id}` },
-                h('p', null, author.name)
-              )
-            )
-          )
-        )
-      )
-    )
+    return html`<div>
+      <${Header}/>
+      <div>${authors.map((author) =>
+        html`<div key=${author.id}>
+          <p>
+            <${Link} to="${`/author/${author.id}`}">${author.name}</>
+          </p>
+        </div>`)}
+      </div>
+    </div>`
   }
 }

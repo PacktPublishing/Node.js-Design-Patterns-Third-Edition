@@ -2,13 +2,14 @@ import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import react from 'react'
 import reactServer from 'react-dom/server.js'
+import htm from 'htm'
 import fastify from 'fastify'
 import fastifyStatic from 'fastify-static'
 import { StaticRouter } from 'react-router-dom'
 import { App } from './frontend/App.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const h = react.createElement
+const html = htm.bind(react.createElement)
 
 // ①
 const template = ({ content }) => `<!DOCTYPE html>
@@ -33,19 +34,24 @@ server.register(fastifyStatic, { // ③
 server.get('*', async (req, reply) => { // ④
   const location = req.raw.originalUrl
   const staticContext = {}
-  const serverApp = h(StaticRouter, // ⑤
-    { location, context: staticContext },
-    h(App)
-  )
+  // ⑤
+  const serverApp = html` 
+    <${StaticRouter}
+      location=${location}
+      context=${staticContext}
+    >
+      <${App}/>
+    </>
+  `
   const content = reactServer.renderToString(serverApp) // ⑥
-  const html = template({ content })
+  const responseHtml = template({ content })
 
   let code = 200
   if (staticContext.statusCode) {
     code = staticContext.statusCode
   }
 
-  reply.code(code).type('text/html').send(html)
+  reply.code(code).type('text/html').send(responseHtml)
 })
 
 const port = Number.parseInt(process.env.PORT) || 3000 // ⑦

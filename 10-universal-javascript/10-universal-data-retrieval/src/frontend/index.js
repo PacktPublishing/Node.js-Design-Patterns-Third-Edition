@@ -1,13 +1,12 @@
 import react from 'react'
 import reactDOM from 'react-dom'
+import htm from 'htm'
 import { BrowserRouter } from 'react-router-dom'
 import { App } from './App.js'
 
-const h = react.createElement
+const html = htm.bind(react.createElement)
 
-reactDOM.hydrate(
-  h(BrowserRouter, {},
-    h(App)
-  ),
+reactDOM.render(
+  html`<${BrowserRouter}><${App}/></>`,
   document.getElementById('root')
 )

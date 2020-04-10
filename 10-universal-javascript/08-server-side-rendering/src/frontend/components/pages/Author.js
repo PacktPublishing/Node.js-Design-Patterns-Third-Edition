@@ -1,43 +1,34 @@
 import react from 'react'
+import htm from 'htm'
 import { FourOhFour } from './FourOhFour.js'
 import { Header } from '../Header.js'
 import { authors } from '../../../data/authors.js'
 
-const h = react.createElement
+const html = htm.bind(react.createElement)
 
 export class Author extends react.Component {
-  constructor (props) {
-    super(props)
-    const author = authors.find(author => author.id === props.match.params.authorId)
-    this.state = {
-      author
-    }
-  }
-
   render () {
-    if (!this.state.author) {
-      return h(FourOhFour, {
-        staticContext: this.props.staticContext,
-        error: 'Author not found'
-      })
+    const author = authors.find(
+      author => author.id === this.props.match.params.authorId
+    )
+
+    if (!author) {
+      return html`<${FourOhFour}
+        staticContext=${this.props.staticContext}
+        error="Author not found"
+      />`
     }
 
-    return h('div', null,
-      h(Header),
-      h('div', null,
-        h('h2', null, this.state.author.name),
-        h('div', null,
-          h('p', null,
-            this.state.author.bio
-          )
-        ),
-        h('h3', null, 'Books'),
-        h('ul', null,
-          this.state.author.books.map((book) =>
-            h('li', { key: book.id }, `${book.title} (${book.year})`)
-          )
-        )
-      )
-    )
+    return html`<div>
+      <${Header}/>
+      <h2>${author.name}</h2>
+      <p>${author.bio}</p>
+      <h3>Books</h3>
+      <ul>
+        ${author.books.map((book) =>
+          html`<li key=${book.id}>${book.title} (${book.year})</li>`
+        )}
+      </ul>
+    </div>`
   }
 }

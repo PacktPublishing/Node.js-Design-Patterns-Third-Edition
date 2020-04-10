@@ -1,9 +1,10 @@
 import react from 'react'
+import htm from 'htm'
 import superagent from 'superagent'
 import { FourOhFour } from './FourOhFour.js'
 import { Header } from '../Header.js'
 
-const h = react.createElement
+const html = htm.bind(react.createElement)
 
 export class Author extends react.Component {
   constructor (props) {
@@ -14,49 +15,48 @@ export class Author extends react.Component {
     }
   }
 
-  async componentDidMount () {
+  async loadData () {
     let author = null
+    this.setState({ loading: false, author })
     try {
       const { body } = await superagent.get(`http://localhost:3001/api/author/${this.props.match.params.authorId}`)
       author = body
     } catch (e) {}
-    this.setState({
-      loading: false,
-      author
-    })
+    this.setState({ loading: false, author })
+  }
+
+  componentDidMount () {
+    this.loadData()
+  }
+
+  componentDidUpdate (prevProps) {
+    if (prevProps.match.params.authorId !== this.props.match.params.authorId) {
+      this.loadData()
+    }
   }
 
   render () {
     if (this.state.loading) {
-      return h('div', null,
-        h(Header),
-        h('div', null, 'Loading ...')
-      )
+      return html`<${Header}/><div>Loading ...</div>`
     }
 
     if (!this.state.author) {
-      return h(FourOhFour, {
-        staticContext: this.props.staticContext,
-        error: 'Author not found'
-      })
+      return html`<${FourOhFour}
+        staticContext=${this.props.staticContext}
+        error="Author not found"
+      />`
     }
 
-    return h('div', null,
-      h(Header),
-      h('div', null,
-        h('h2', null, this.state.author.name),
-        h('div', null,
-          h('p', null,
-            this.state.author.bio
-          )
-        ),
-        h('h3', null, 'Books'),
-        h('ul', null,
-          this.state.author.books.map((book) =>
-            h('li', { key: book.id }, `${book.title} (${book.year})`)
-          )
-        )
-      )
-    )
+    return html`<div>
+      <${Header}/>
+      <h2>${this.state.author.name}</h2>
+      <p>${this.state.author.bio}</p>
+      <h3>Books</h3>
+      <ul>
+        ${this.state.author.books.map((book) =>
+          html`<li key=${book.id}>${book.title} (${book.year})</li>`
+        )}
+      </ul>
+    </div>`
   }
 }

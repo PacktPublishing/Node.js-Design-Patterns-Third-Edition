@@ -1,18 +1,19 @@
 import react from 'react'
+import htm from 'htm'
 import { Link } from 'react-router-dom'
 import { Header } from '../Header.js'
 
-const h = react.createElement
+const html = htm.bind(react.createElement)
 
 export class FourOhFour extends react.Component {
   render () {
-    return h('div', null,
-      h(Header),
-      h('div', null,
-        h('h2', null, '404'),
-        h('h3', null, this.props.error || 'Page not found'),
-        h(Link, { to: '/' }, 'Go back to the home page')
-      )
-    )
+    return html`<div>
+      <${Header}/>
+      <div>
+        <h2>404</h2>
+        <h3>${this.props.error || 'Page not found'}</h3>
+        <${Link} to="/">Go back to the home page</>
+      </div>
+    </div>`
   }
 }

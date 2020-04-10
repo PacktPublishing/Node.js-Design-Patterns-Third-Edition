@@ -2,6 +2,7 @@ import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import react from 'react'
 import reactServer from 'react-dom/server.js'
+import htm from 'htm'
 import fastify from 'fastify'
 import fastifyStatic from 'fastify-static'
 import { StaticRouter, matchPath } from 'react-router-dom'
@@ -9,8 +10,7 @@ import { routes } from './frontend/routes.js'
 import { App } from './frontend/App.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const h = react.createElement
-const server = fastify({ logger: true })
+const html = htm.bind(react.createElement)
 
 const template = ({ content, serverData }) => `<!DOCTYPE html>
 <html>
@@ -26,6 +26,8 @@ window.__STATIC_CONTEXT__=${JSON.stringify(serverData)}
     <script type="text/javascript" src="/public/main.js"></script>
   </body>
 </html>`
+
+const server = fastify({ logger: true })
 
 server.register(fastifyStatic, {
   root: resolve(__dirname, '..', 'public'),
@@ -58,21 +60,28 @@ server.get('*', async (req, reply) => {
   }
 
   const staticContext = { [location]: { data: staticData, err: staticError } }
-  const app = h(StaticRouter, { location, context: staticContext }, h(App))
-  const content = reactServer.renderToString(app)
+  const serverApp = html` 
+    <${StaticRouter}
+      location=${location}
+      context=${staticContext}
+    >
+      <${App}/>
+    </>
+  `
+  const content = reactServer.renderToString(serverApp)
   const serverData = hasStaticContext ? staticContext : null
-  const html = template({ content, serverData })
+  const responseHtml = template({ content, serverData })
 
   const code = staticContext.statusCode
     ? staticContext.statusCode
     : 200
-  reply.code(code).type('text/html').send(html)
+  reply.code(code).type('text/html').send(responseHtml)
 })
 
 const port = Number.parseInt(process.env.PORT) || 3000
 const address = process.env.ADDRESS || '127.0.0.1'
 
-server.listen(port, address, function (err, addr) {
+server.listen(port, address, function (err) {
   if (err) {
     console.error(err)
     process.exit(1)

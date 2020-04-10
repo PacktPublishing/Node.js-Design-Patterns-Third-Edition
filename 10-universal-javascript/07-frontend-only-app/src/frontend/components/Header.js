@@ -1,16 +1,15 @@
 import react from 'react'
+import htm from 'htm'
 import { Link } from 'react-router-dom'
 
-const h = react.createElement
+const html = htm.bind(react.createElement)
 
 export class Header extends react.Component {
   render () {
-    return (
-      h('header', null,
-        h('h1', null,
-          h(Link, { to: '/' }, 'My library')
-        )
-      )
-    )
+    return html`<header>
+      <h1>
+        <${Link} to="/">My library</>
+      </h1>
+    </header>`
   }
 }
