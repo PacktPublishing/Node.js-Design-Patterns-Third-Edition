@@ -1,6 +1,6 @@
 import react from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import superagent from 'superagent'
 import { AsyncPage } from './AsyncPage.js'
 import { Header } from '../Header.js'
 
@@ -8,8 +8,8 @@ const h = react.createElement
 
 export class AuthorsIndex extends AsyncPage {
   static async preloadAsyncData (props) {
-    const { data } = await axios.get('http://localhost:3001/api/authors')
-    return { authors: data }
+    const { body } = await superagent.get('http://localhost:3001/api/authors')
+    return { authors: body }
   }
 
   render () {

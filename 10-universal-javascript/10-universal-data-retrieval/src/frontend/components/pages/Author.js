@@ -1,5 +1,5 @@
 import react from 'react'
-import axios from 'axios'
+import superagent from 'superagent'
 import { AsyncPage } from './AsyncPage.js'
 import { FourOhFour } from './FourOhFour.js'
 import { Header } from '../Header.js'
@@ -8,8 +8,8 @@ const h = react.createElement
 
 export class Author extends AsyncPage {
   static async preloadAsyncData (props) {
-    const { data } = await axios.get(`http://localhost:3001/api/author/${props.match.params.authorId}`)
-    return { author: data }
+    const { body } = await superagent.get(`http://localhost:3001/api/author/${props.match.params.authorId}`)
+    return { author: body }
   }
 
   render () {

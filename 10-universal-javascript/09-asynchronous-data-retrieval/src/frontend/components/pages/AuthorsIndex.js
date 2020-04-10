@@ -1,6 +1,6 @@
 import react from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import superagent from 'superagent'
 import { Header } from '../Header.js'
 
 const h = react.createElement
@@ -15,10 +15,10 @@ export class AuthorsIndex extends react.Component {
   }
 
   async componentDidMount () {
-    const { data } = await axios.get('http://localhost:3001/api/authors')
+    const { body } = await superagent.get('http://localhost:3001/api/authors')
     this.setState({
       loading: false,
-      authors: data
+      authors: body
     })
   }
 

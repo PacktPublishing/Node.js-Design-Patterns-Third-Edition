@@ -27,13 +27,13 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "axios": "^0.19.2",
     "esm": "^3.2.25",
     "fastify": "^2.13.0",
     "fastify-cors": "^3.0.3",
     "fastify-static": "^2.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2"
+    "react-router-dom": "^5.1.2",
+    "superagent": "^5.2.2"
   }
 }

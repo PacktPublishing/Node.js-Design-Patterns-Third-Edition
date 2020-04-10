@@ -1,5 +1,5 @@
 import react from 'react'
-import axios from 'axios'
+import superagent from 'superagent'
 import { FourOhFour } from './FourOhFour.js'
 import { Header } from '../Header.js'
 
@@ -17,8 +17,8 @@ export class Author extends react.Component {
   async componentDidMount () {
     let author = null
     try {
-      const { data } = await axios.get(`http://localhost:3001/api/author/${this.props.match.params.authorId}`)
-      author = data
+      const { body } = await superagent.get(`http://localhost:3001/api/author/${this.props.match.params.authorId}`)
+      author = body
     } catch (e) {}
     this.setState({
       loading: false,
