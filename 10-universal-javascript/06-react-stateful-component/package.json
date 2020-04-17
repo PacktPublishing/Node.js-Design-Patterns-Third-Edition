@@ -1,0 +1,26 @@
+{
+  "name": "06-react-stateful-component",
+  "version": "1.0.0",
+  "description": "My webpack project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.cjs",
+    "start": "webpack-dev-server --config webpack.config.cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.0.4",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "htm": "^3.0.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
