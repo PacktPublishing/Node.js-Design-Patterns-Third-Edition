@@ -1,0 +1,15 @@
+{
+  "name": "03-pubsub-chat-zmq",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ws": "^7.2.3",
+    "serve-handler": "^6.1.2",
+    "yargs": "^15.3.1",
+    "zeromq": "^6.0.0-beta.6"
+  }
+}
