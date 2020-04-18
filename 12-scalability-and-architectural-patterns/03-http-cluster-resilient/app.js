@@ -2,11 +2,20 @@ import { createServer } from 'http'
 import { cpus } from 'os'
 import cluster from 'cluster'
 
-if (cluster.isMaster) { // ①
+if (cluster.isMaster) {
   const availableCpus = cpus()
   console.log(`Clustering to ${availableCpus.length} CPUs`)
   availableCpus.forEach(() => cluster.fork())
-} else { // ②
+  cluster.on('exit', (worker, code) => {
+    if (code !== 0 && !worker.exitedAfterDisconnect) {
+      console.log(`Worker ${worker.process.pid} crashed. Starting a new worker`)
+      cluster.fork()
+    }
+  })
+} else {
+  setTimeout(() => {
+    throw new Error('Ooops')
+  }, Math.ceil(Math.random() * 3) * 1000)
   const { pid } = process
   const server = createServer((req, res) => {
     let i = 1e7; while (i > 0) { i-- }
