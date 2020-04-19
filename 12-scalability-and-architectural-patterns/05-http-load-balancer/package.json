@@ -1,0 +1,22 @@
+{
+  "name": "05-http-load-balancer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "forever start app.js 8081 && forever start app.js 8082 && forever start app.js 8083 && forever start app.js 8084",
+    "start:nginx": "nginx -c ${PWD}/nginx.conf",
+    "stop": "forever stopall",
+    "benchmark": "autocannon -c 200 -d 10 http://localhost:8080"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "forever": "^2.0.0"
+  },
+  "devDependencies": {
+    "autocannon": "^4.6.0"
+  }
+}
