@@ -4,7 +4,7 @@ This sample demonstrates how to integrate different server instances of a chat a
 
 ## Run
 
-As a pre-requisite to this sample, you first need to install [Redis](http://redis.io/download)
+As a pre-requisite to this sample, you first need to install [Redis](http://redis.io/download) and have it running locally on its default port.
 
 To run the sample, install all dependencies with:
  
@@ -15,8 +15,8 @@ npm install
 Then run (in two separate terminals):
 
 ```shell script
-  node app 8081
-  node app 8082
+node index.js 8081
+node index.js 8082
 ```
   
 To access the application open a browser tab at the address:

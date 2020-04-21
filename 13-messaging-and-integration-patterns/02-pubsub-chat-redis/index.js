@@ -1,10 +1,10 @@
 import { createServer } from 'http'
 import staticHandler from 'serve-handler'
 import ws from 'ws'
-import redis from 'redis'
+import Redis from 'ioredis'
 
-const redisSub = redis.createClient()
-const redisPub = redis.createClient()
+const redisSub = new Redis()
+const redisPub = new Redis()
 
 // serve static files
 const server = createServer((req, res) => {

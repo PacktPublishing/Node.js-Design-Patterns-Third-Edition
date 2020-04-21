@@ -13,9 +13,9 @@ npm install
 Then run (in separate terminals):
 
 ```shell script
-node app --http 8080 --pub 5000 --sub 5001 --sub 5002
-node app --http 8081 --pub 5001 --sub 5000 --sub 5002
-node app --http 8082 --pub 5002 --sub 5000 --sub 5001
+node index.js --http 8080 --pub 5000 --sub 5001 --sub 5002
+node index.js --http 8081 --pub 5001 --sub 5000 --sub 5002
+node index.js --http 8082 --pub 5002 --sub 5000 --sub 5001
 ```
   
 You can try to access those three addresses at the same time, and
