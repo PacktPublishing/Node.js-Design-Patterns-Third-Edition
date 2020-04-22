@@ -12,9 +12,9 @@ const server = createServer((req, res) => {
 })
 
 const wss = new ws.Server({ server })
-wss.on('connection', ws => {
+wss.on('connection', client => {
   console.log('Client connected')
-  ws.on('message', msg => {
+  client.on('message', msg => {
     console.log(`Message: ${msg}`)
     redisPub.publish('chat_messages', msg)
   })

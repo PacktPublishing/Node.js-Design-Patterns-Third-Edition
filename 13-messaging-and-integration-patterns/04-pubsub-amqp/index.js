@@ -11,8 +11,10 @@ async function main () {
   const connection = await amqp.connect('amqp://localhost')
   const channel = await connection.createChannel()
   await channel.assertExchange('chat', 'fanout')
-  const { queue } = await channel.assertQueue(`chat_srv_${httpPort}`,
-    { exclusive: true })
+  const { queue } = await channel.assertQueue(
+    `chat_srv_${httpPort}`,
+    { exclusive: true }
+  )
   await channel.bindQueue(queue, 'chat')
   channel.consume(queue, msg => {
     msg = msg.content.toString()
@@ -26,10 +28,10 @@ async function main () {
   })
 
   const wss = new ws.Server({ server })
-  wss.on('connection', ws => {
+  wss.on('connection', client => {
     console.log('Client connected')
 
-    ws.on('message', msg => {
+    client.on('message', msg => {
       console.log(`Message: ${msg}`)
       channel.publish('chat', '', Buffer.from(msg))
     })
@@ -39,7 +41,7 @@ async function main () {
       .get('http://localhost:8090')
       .on('error', err => console.error(err))
       .pipe(JSONStream.parse('*'))
-      .on('data', msg => ws.send(msg))
+      .on('data', msg => client.send(msg))
   })
 
   function broadcast (msg) {
