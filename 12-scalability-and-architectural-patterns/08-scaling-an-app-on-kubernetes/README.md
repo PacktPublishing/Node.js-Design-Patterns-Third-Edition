@@ -42,10 +42,10 @@ minikube service hello-web
 
 ### 3. Scale the number of instances
 
-Now let's scale the application to 2 instances:
+Now let's scale the application to 5 instances:
 
 ```bash
-kubectl scale --replicas=2 deployment hello-web
+kubectl scale --replicas=5 deployment hello-web
 ```
 
 Try to make few requests, you should see that the response will provide different hostnames.
@@ -78,10 +78,6 @@ kubectl scale --replicas=0 deployment hello-web
 ```
 
 Delete the deployment:
-
-```bash
-kubectl delete -n default deployment hello-web
-```
 
 ```bash
 kubectl delete -n default deployment hello-web
