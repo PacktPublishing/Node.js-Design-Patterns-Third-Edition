@@ -1,5 +1,5 @@
 {
-  "name": "02-pubsub-chat-redis",
+  "name": "05-pubsub-redis-streams",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -9,6 +9,6 @@
   "dependencies": {
     "ws": "^7.2.3",
     "serve-handler": "^6.1.2",
-    "ioredis": "^4.16.3"
+    "ioredis": "^4.16.2"
   }
 }

@@ -31,9 +31,9 @@ async function initializeSockets () {
 initializeSockets()
 
 const wss = new ws.Server({ server })
-wss.on('connection', ws => {
+wss.on('connection', client => {
   console.log('Client connected')
-  ws.on('message', msg => {
+  client.on('message', msg => {
     console.log(`Message: ${msg}`)
     broadcast(msg)
     pubSocket.send(`chat ${msg}`)
