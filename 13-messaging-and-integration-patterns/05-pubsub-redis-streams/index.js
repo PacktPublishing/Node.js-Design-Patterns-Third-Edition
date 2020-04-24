@@ -21,7 +21,8 @@ wss.on('connection', async client => {
   })
 
   // Load message history
-  const logs = await redisClient.xrange('chat_stream', '-', '+')
+  const logs = await redisClient.xrange(
+    'chat_stream', '-', '+')
   for (const [, [, message]] of logs) {
     client.send(message)
   }
@@ -35,15 +36,16 @@ function broadcast (msg) {
   }
 }
 
-let lastMessageId = '$'
+let lastRecordId = '$'
 async function processStreamMessages () {
   while (true) {
-    const data = await redisClientXRead.xread('BLOCK', '0', 'STREAMS', 'chat_stream', lastMessageId)
+    const data = await redisClientXRead.xread(
+      'BLOCK', '0', 'STREAMS', 'chat_stream', lastRecordId)
     for (const [, logs] of data) {
-      for (const [messageId, [, message]] of logs) {
+      for (const [recordId, [, message]] of logs) {
         console.log(`Message from stream: ${message}`)
         broadcast(message)
-        lastMessageId = messageId
+        lastRecordId = recordId
       }
     }
   }

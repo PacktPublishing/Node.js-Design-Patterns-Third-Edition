@@ -1,0 +1,13 @@
+{
+  "name": "07-task-distribution-amqp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "amqplib": "^0.5.5",
+    "indexed-string-variation": "^1.0.3"
+  }
+}
