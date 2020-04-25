@@ -15,6 +15,6 @@ Then run (in separate terminals):
 ```shell script
 node worker.js
 node worker.js
-node sink.js
-node ventilator.js 4 f8e966d1e207d02c44511a58dccff2f5429e9a3b
+node collector.js
+node producer.js 4 f8e966d1e207d02c44511a58dccff2f5429e9a3b
 ```

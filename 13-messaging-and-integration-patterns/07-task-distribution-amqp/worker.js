@@ -1,6 +1,5 @@
 import amqp from 'amqplib'
-import { createHash } from 'crypto'
-import isv from 'indexed-string-variation'
+import { processTask } from './processTask.js'
 
 async function main () {
   const connection = await amqp.connect('amqp://localhost')
@@ -8,21 +7,12 @@ async function main () {
   const { queue } = await channel.assertQueue('tasks_queue')
 
   channel.consume(queue, async (rawMessage) => {
-    const msg = JSON.parse(rawMessage.content.toString())
-    const variationGen = isv.generator(msg.alphabet)
-    for (let idx = msg.batchStart; idx <= msg.batchEnd; idx++) {
-      const word = variationGen(idx)
-
-      console.log(`Processing: ${word}`)
-      const shasum = createHash('sha1')
-      shasum.update(word)
-      const digest = shasum.digest('hex')
-
-      if (digest === msg.searchHash) {
-        console.log(`Found! => ${word}`)
-        await channel.sendToQueue('results_queue',
-          Buffer.from(`Found! ${digest} => ${word}`))
-      }
+    const found = processTask(
+      JSON.parse(rawMessage.content.toString()))
+    if (found) {
+      console.log(`Found! => ${found}`)
+      await channel.sendToQueue('results_queue',
+        Buffer.from(`Found: ${found}`))
     }
 
     await channel.ack(rawMessage)

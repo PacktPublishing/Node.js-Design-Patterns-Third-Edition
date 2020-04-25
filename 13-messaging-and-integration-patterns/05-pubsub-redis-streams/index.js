@@ -37,19 +37,19 @@ function broadcast (msg) {
 }
 
 let lastRecordId = '$'
+
 async function processStreamMessages () {
   while (true) {
-    const data = await redisClientXRead.xread(
+    const [[, records]] = await redisClientXRead.xread(
       'BLOCK', '0', 'STREAMS', 'chat_stream', lastRecordId)
-    for (const [, logs] of data) {
-      for (const [recordId, [, message]] of logs) {
-        console.log(`Message from stream: ${message}`)
-        broadcast(message)
-        lastRecordId = recordId
-      }
+    for (const [recordId, [, message]] of records) {
+      console.log(`Message from stream: ${message}`)
+      broadcast(message)
+      lastRecordId = recordId
     }
   }
 }
+
 processStreamMessages().catch(err => console.error(err))
 
 server.listen(process.argv[2] || 8080)
