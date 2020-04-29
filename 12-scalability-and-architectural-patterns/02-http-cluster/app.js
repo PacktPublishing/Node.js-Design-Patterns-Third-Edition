@@ -4,7 +4,7 @@ import cluster from 'cluster'
 
 if (cluster.isMaster) { // ①
   const availableCpus = cpus()
-  console.log(`Clustering to ${availableCpus.length} CPUs`)
+  console.log(`Clustering to ${availableCpus.length} processes`)
   availableCpus.forEach(() => cluster.fork())
 } else { // ②
   const { pid } = process
