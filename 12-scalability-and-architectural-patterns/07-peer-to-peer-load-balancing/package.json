@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "get-stream": "^5.1.0",
     "superagent": "^5.2.2"
   }
 }

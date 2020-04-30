@@ -4,7 +4,7 @@ import cluster from 'cluster'
 
 if (cluster.isMaster) {
   const availableCpus = cpus()
-  console.log(`Clustering to ${availableCpus.length} CPUs`)
+  console.log(`Clustering to ${availableCpus.length} processes`)
   availableCpus.forEach(() => cluster.fork())
   cluster.on('exit', (worker, code) => {
     if (code !== 0 && !worker.exitedAfterDisconnect) {

@@ -31,7 +31,6 @@ async function main () {
   }
 
   process.on('exit', unregisterService) // ④
-  process.on('SIGINT', unregisterService)
   process.on('uncaughtException', unregisterService)
 
   const server = createServer((req, res) => { // ⑤

@@ -1,4 +1,6 @@
 import { request } from 'http'
+import getStream from 'get-stream'
+
 const servers = [
   { host: 'localhost', port: 8081 },
   { host: 'localhost', port: 8082 }
@@ -11,6 +13,8 @@ export function balancedRequest (options) {
     options.hostname = servers[i].host
     options.port = servers[i].port
 
-    request(options, resolve).end()
+    request(options, (response) => {
+      resolve(getStream(response))
+    }).end()
   })
 }
