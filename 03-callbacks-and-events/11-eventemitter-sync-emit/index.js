@@ -15,16 +15,17 @@ class FindRegexSync extends EventEmitter {
 
   find () {
     for (const file of this.files) {
+      let content
       try {
-        const content = readFileSync(file, 'utf8')
-        this.emit('fileread', file)
-
-        const match = content.match(this.regex)
-        if (match) {
-          match.forEach(elem => this.emit('found', file, elem))
-        }
+        content = readFileSync(file, 'utf8')
       } catch (err) {
         this.emit('error', err)
+      }
+
+      this.emit('fileread', file)
+      const match = content.match(this.regex)
+      if (match) {
+        match.forEach(elem => this.emit('found', file, elem))
       }
     }
     return this
