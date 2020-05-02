@@ -6,10 +6,10 @@ This sample demonstrates how to integrate different server instances of a chat a
 
 As a pre-requisite to this sample, you first need to install [Redis](http://redis.io/download) and have it running locally on its default port.
 
-If you use docker you can have a redis instance running locally with:
+If you have docker installed you can easily run an ephemeral redis instance locally with:
 
 ```bash
-docker run -it -p 6379:6379 --name some-redis redis redis-server --appendonly yes
+docker run -it -p 6379:6379 redis redis-server --appendonly yes
 ```
 
 To run the sample, install all dependencies with:
