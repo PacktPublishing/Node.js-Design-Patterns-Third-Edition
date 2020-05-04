@@ -3,7 +3,7 @@
   <body>
     Messages:
     <div id="messages"></div>
-    <form onsubmit="sendMessage(event)">
+    <form id="msgForm">
       <input type="text" placeholder="Send a message" id="msgBox"/>
       <input type="submit" value="Send"/>
     </form>
@@ -16,12 +16,13 @@
         msgDiv.innerHTML = message.data
         document.getElementById('messages').appendChild(msgDiv)
       }
-      function sendMessage (event) {
+      const form = document.getElementById('msgForm')
+      form.addEventListener('submit', (event) => {
         event.preventDefault()
         const message = document.getElementById('msgBox').value
         ws.send(message)
         document.getElementById('msgBox').value = ''
-      }
+      })
     </script>
   </body>
 </html>
