@@ -1,6 +1,6 @@
 # 05-callback-iterator-pattern
 
-Simple example that demostrates the callback iteration pattern
+Simple example that demonstrates the callback iteration pattern
 
 ## Run
 

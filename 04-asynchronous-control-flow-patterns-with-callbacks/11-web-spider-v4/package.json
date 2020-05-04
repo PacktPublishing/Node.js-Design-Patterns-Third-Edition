@@ -1,6 +1,10 @@
 {
-  "name": "10-web-spider-v4",
+  "name": "11-web-spider-v4",
   "version": "1.0.0",
+  "engines" : {
+    "node" : ">=14"
+  },
+  "engineStrict": true,
   "description": "",
   "main": "index.js",
   "type": "module",

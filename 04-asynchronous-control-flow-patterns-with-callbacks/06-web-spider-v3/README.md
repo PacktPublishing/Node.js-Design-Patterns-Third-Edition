@@ -1,6 +1,6 @@
 # 06-web-spider-v3
 
-Web spider example to demostrate unlimited parallel execution.
+Web spider example to demonstrate unlimited parallel execution.
 
 ## Run
 

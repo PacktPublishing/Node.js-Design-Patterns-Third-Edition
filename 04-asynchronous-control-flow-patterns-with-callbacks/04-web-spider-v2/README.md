@@ -1,6 +1,6 @@
 # 04-web-spider-v2
 
-Web spider example to demostrate sequential callbacks
+Web spider example to demonstrate sequential callbacks
 
 ## Run
 
