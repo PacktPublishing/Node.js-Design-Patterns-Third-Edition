@@ -36,6 +36,9 @@ function spiderLinks (currentUrl, body, nesting, cb) {
   }
 
   const links = getPageLinks(currentUrl, body) // [1]
+  if (links.length === 0) {
+    return process.nextTick(cb)
+  }
 
   function iterate (index) { // [2]
     if (index === links.length) {
