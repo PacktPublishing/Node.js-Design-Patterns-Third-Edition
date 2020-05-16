@@ -1,13 +1,12 @@
 {
-  "name": "10-queue-limited-parallel-execution-with-events",
+  "name": "05-callback-iteration-pattern",
   "version": "1.0.0",
-  "engines": {
-    "node": ">=14"
+  "engines" : {
+    "node" : ">=14"
   },
   "engineStrict": true,
-  "description": "",
-  "main": "index.js",
-  "type": "module",
+  "description": "Simple example that demonstrates the callback iteration pattern",
+  "main": "test.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,6 +1,10 @@
 {
   "name": "01-web-spider",
   "version": "1.0.0",
+  "engines" : {
+    "node" : ">=14"
+  },
+  "engineStrict": true,
   "description": "",
   "main": "index.js",
   "type": "module",

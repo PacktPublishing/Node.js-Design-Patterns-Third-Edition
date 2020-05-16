@@ -1,6 +1,6 @@
-# 10-web-spider-v4
+# 11-web-spider-v4
 
-Web spider example to demostrate limited parallel concurrency using queues
+Web spider example to demonstrate limited parallel concurrency using queues
 
 ## Run
 

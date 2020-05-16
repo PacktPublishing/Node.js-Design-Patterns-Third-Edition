@@ -1,6 +1,6 @@
 # 09-queue-limited-parallel-execution-pattern
 
-Simple example that demostrates the callback limited parallel execution pattern using a Queue
+Simple example that demonstrates the callback limited parallel execution pattern using a Queue
 
 ## Run
 

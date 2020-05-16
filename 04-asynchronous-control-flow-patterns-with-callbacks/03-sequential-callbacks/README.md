@@ -1,6 +1,6 @@
 # 03-sequential-callbacks
 
-Simple example that demostrates sequential tasks using callbacks
+Simple example that demonstrates sequential tasks using callbacks
 
 ## Run
 

@@ -1,21 +1,16 @@
 {
-  "name": "09-queue-limited-parallel-execution-pattern",
+  "name": "07-callback-unlimited-parallel-execution-pattern",
   "version": "1.0.0",
   "engines" : {
     "node" : ">=14"
   },
   "engineStrict": true,
-  "description": "",
-  "main": "index.js",
-  "type": "module",
+  "description": "Simple example that demonstrates the callback parallel execution pattern",
+  "main": "test.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-  },
-  "devDependencies": {
-  }
+  "license": "ISC"
 }
