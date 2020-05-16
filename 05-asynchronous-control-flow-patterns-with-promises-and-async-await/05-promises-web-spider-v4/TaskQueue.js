@@ -8,9 +8,7 @@ export class TaskQueue {
   runTask (task) {
     return new Promise((resolve, reject) => {
       this.queue.push(() => {
-        const taskPromise = task()
-        taskPromise.then(resolve, reject)
-        return taskPromise
+        return task().then(resolve, reject)
       })
       process.nextTick(this.next.bind(this))
     })
