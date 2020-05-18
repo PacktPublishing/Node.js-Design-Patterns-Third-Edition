@@ -1,6 +1,6 @@
 # 04-promises-web-spider-v3
 
-Web spider example to demostrate parallel asynchronous execution with Promises
+Web spider example to demonstrate parallel asynchronous execution with Promises
 
 ## Run
 
