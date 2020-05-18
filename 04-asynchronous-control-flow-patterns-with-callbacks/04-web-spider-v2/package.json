@@ -1,8 +1,8 @@
 {
   "name": "04-web-spider-v2",
   "version": "1.0.0",
-  "engines" : {
-    "node" : ">=14"
+  "engines": {
+    "node": ">=14"
   },
   "engineStrict": true,
   "description": "",
@@ -16,11 +16,9 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "mkdirp": "^0.5.1",
-    "request": "^2.88.0",
-    "slug": "^1.1.0"
+    "mkdirp": "^0.5.5",
+    "slug": "^1.1.0",
+    "superagent": "^5.2.2"
   },
-  "devDependencies": {
-    "jest": "^24.9.0"
-  }
+  "devDependencies": {}
 }

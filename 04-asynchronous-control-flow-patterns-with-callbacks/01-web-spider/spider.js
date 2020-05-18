@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import request from 'request'
+import superagent from 'superagent'
 import mkdirp from 'mkdirp'
 import { urlToFilename } from './utils.js'
 
@@ -9,7 +9,7 @@ export function spider (url, cb) {
   fs.access(filename, err => { // [1]
     if (err && err.code === 'ENOENT') {
       console.log(`Downloading ${url} into ${filename}`)
-      request(url, (err, response, body) => { // [2]
+      superagent.get(url).end((err, res) => { // [2]
         if (err) {
           cb(err)
         } else {
@@ -17,7 +17,7 @@ export function spider (url, cb) {
             if (err) {
               cb(err)
             } else {
-              fs.writeFile(filename, body, err => { // [4]
+              fs.writeFile(filename, res.text, err => { // [4]
                 if (err) {
                   cb(err)
                 } else {
