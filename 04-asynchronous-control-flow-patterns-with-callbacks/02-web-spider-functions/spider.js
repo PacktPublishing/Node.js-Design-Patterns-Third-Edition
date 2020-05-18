@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import request from 'request'
+import superagent from 'superagent'
 import mkdirp from 'mkdirp'
 import { urlToFilename } from './utils.js'
 
@@ -15,16 +15,16 @@ function saveFile (filename, contents, cb) {
 
 function download (url, filename, cb) {
   console.log(`Downloading ${url}`)
-  request(url, (err, response, body) => {
+  superagent.get(url).end((err, res) => {
     if (err) {
       return cb(err)
     }
-    saveFile(filename, body, err => {
+    saveFile(filename, res.text, err => {
       if (err) {
         return cb(err)
       }
       console.log(`Downloaded and saved: ${url}`)
-      cb(null, body)
+      cb(null, res.text)
     })
   })
 }

@@ -1,8 +1,8 @@
 {
   "name": "01-web-spider",
   "version": "1.0.0",
-  "engines" : {
-    "node" : ">=14"
+  "engines": {
+    "node": ">=14"
   },
   "engineStrict": true,
   "description": "",
@@ -15,11 +15,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mkdirp": "^0.5.1",
-    "request": "^2.88.0",
-    "slug": "^1.1.0"
+    "mkdirp": "^0.5.5",
+    "slug": "^1.1.0",
+    "superagent": "^5.2.2"
   },
-  "devDependencies": {
-    "jest": "^24.9.0"
-  }
+  "devDependencies": {}
 }
