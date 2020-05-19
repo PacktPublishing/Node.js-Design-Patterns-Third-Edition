@@ -6,8 +6,6 @@ This example demostrates how to benchmark a simple http server that uses the clu
 
 To run the example server:
 
-To run the example server:
-
 ```bash
 npm start # or `node app.js`
 ```
