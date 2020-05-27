@@ -14,5 +14,6 @@ node index.js
 or
 
 ```bash
-node simplified-construction
+node simplified-construction.js
 ```
+
