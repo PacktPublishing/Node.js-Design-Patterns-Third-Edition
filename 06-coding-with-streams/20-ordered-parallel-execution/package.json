@@ -1,0 +1,19 @@
+{
+  "name": "20-ordered-parallel-execution",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "parallel-transform": "^1.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "split": "^1.0.1"
+  }
+}
