@@ -8,5 +8,9 @@
   },
   "dependencies": {
     "json-over-tcp-2": "^0.3.5"
-  }
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "engineStrict": true
 }

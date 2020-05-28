@@ -2,8 +2,8 @@
   "name": "03-sequential-callbacks",
   "version": "1.0.0",
   "description": "Simple example that demonstrates sequential tasks using callbacks",
-  "engines" : {
-    "node" : ">=14"
+  "engines": {
+    "node": ">=14"
   },
   "engineStrict": true,
   "main": "test.js",

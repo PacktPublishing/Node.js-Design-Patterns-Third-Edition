@@ -10,5 +10,9 @@
     "ws": "^7.2.3",
     "serve-handler": "^6.1.2",
     "ioredis": "^4.16.2"
-  }
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "engineStrict": true
 }

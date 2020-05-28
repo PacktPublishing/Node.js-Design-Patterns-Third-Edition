@@ -8,5 +8,9 @@
   },
   "dependencies": {
     "zeromq": "^6.0.0-beta.6"
-  }
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "engineStrict": true
 }

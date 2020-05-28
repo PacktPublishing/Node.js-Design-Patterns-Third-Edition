@@ -9,5 +9,9 @@
   "dependencies": {
     "amqplib": "^0.5.5",
     "indexed-string-variation": "^1.0.3"
-  }
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "engineStrict": true
 }

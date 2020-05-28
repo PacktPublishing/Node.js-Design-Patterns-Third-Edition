@@ -12,5 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "mkdirp-promise": "^5.0.1"
-  }
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "engineStrict": true
 }

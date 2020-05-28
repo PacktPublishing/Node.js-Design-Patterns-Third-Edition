@@ -10,5 +10,9 @@
     "zeromq": "^6.0.0-beta.6",
     "indexed-string-variation": "^1.0.3",
     "delay": "^4.3.0"
-  }
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "engineStrict": true
 }

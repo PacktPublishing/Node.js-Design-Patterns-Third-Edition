@@ -25,5 +25,9 @@
   },
   "dependencies": {
     "nunjucks": "^3.2.1"
-  }
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "engineStrict": true
 }

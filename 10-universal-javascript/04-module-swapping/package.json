@@ -26,5 +26,9 @@
   "dependencies": {
     "chalk": "^3.0.0",
     "nunjucks": "^3.2.1"
-  }
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "engineStrict": true
 }
