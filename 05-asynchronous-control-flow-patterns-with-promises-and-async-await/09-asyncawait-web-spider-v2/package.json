@@ -11,5 +11,9 @@
     "mkdirp": "^0.5.1",
     "superagent": "^5.2.2",
     "slug": "^1.1.0"
-  }
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "engineStrict": true
 }

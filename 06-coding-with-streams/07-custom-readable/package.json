@@ -15,5 +15,9 @@
   },
   "devDependencies": {
     "jest": "^24.9.0"
-  }
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "engineStrict": true
 }

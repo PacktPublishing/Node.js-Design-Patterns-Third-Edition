@@ -14,5 +14,9 @@
     "monotonic-timestamp": "^0.0.9",
     "superagent": "^5.2.2",
     "amqplib": "^0.5.5"
-  }
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "engineStrict": true
 }

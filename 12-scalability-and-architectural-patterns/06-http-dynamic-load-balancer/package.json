@@ -23,5 +23,9 @@
   },
   "devDependencies": {
     "autocannon": "^4.6.0"
-  }
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "engineStrict": true
 }

@@ -1,8 +1,8 @@
 {
   "name": "09-queue-limited-parallel-execution-pattern",
   "version": "1.0.0",
-  "engines" : {
-    "node" : ">=14"
+  "engines": {
+    "node": ">=14"
   },
   "engineStrict": true,
   "description": "",
@@ -14,8 +14,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-  },
-  "devDependencies": {
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }
