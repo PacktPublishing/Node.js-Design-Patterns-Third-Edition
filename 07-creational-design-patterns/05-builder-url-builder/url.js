@@ -1,5 +1,6 @@
 export class Url {
-  constructor (protocol, username, password, hostname, port, pathname, search, hash) {
+  constructor (protocol, username, password, hostname,
+    port, pathname, search, hash) {
     this.protocol = protocol
     this.username = username
     this.password = password
@@ -14,7 +15,8 @@ export class Url {
 
   validate () {
     if (!this.protocol || !this.hostname) {
-      throw new Error('Must specify at least a protocol and an hostname')
+      throw new Error('Must specify at least a ' +
+        'protocol and a hostname')
     }
   }
 

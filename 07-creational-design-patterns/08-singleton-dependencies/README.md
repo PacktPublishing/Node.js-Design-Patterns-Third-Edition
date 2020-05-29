@@ -6,18 +6,15 @@ This example shows how to wire dependencies using the singleton pattern
 
 Install all necessary dependencies with:
 
-```bash
+```shell script
 npm install
 ```
-
-Note that you will need to have [sqlite](https://sqlite.org/) installed in your system.
-
 
 ## Run
 
 To run the example:
 
-```bash
+```shell script
 node import-posts.js
 node index.js
 ```

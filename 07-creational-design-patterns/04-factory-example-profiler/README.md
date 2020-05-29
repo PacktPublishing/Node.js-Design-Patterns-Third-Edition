@@ -8,9 +8,9 @@ To run the example launch:
 
 ```bash
 # Lanuch in development mode (with profiler)
-node index.js
+node index.js 2201307499
 
 # Launch in production mode (without profiler)
-NODE_ENV=production node index.js
+NODE_ENV=production node index.js 2201307499
 ```
 

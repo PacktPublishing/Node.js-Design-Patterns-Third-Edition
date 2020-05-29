@@ -1,7 +1,7 @@
+import { Blog } from './blog.js'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import { createDb } from './db.js'
-import { createPost } from './blog.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -28,12 +28,13 @@ const posts = [
 ]
 
 async function main () {
-  const db = await createDb(join(__dirname, 'data.sqlite'))
+  const db = createDb(join(__dirname, 'data.sqlite'))
+  const blog = new Blog(db)
+  await blog.initialize()
 
   await Promise.all(
     posts.map(
-      (post) => createPost(
-        db,
+      (post) => blog.createPost(
         post.id,
         post.title,
         post.content,
@@ -44,4 +45,4 @@ async function main () {
   console.log('All posts imported')
 }
 
-main()
+main().catch(console.error)

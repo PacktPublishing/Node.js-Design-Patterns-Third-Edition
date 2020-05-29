@@ -1,22 +1,21 @@
-import { getAllPosts } from './blog.js'
+import { Blog } from './blog.js'
 
 async function main () {
-  const posts = await getAllPosts()
+  const blog = new Blog()
+  await blog.initialize()
+  const posts = await blog.getAllPosts()
   if (posts.length === 0) {
-    console.log('No post available. Run `node import-posts.js` to load some sample posts')
+    console.log('No post available. Run `node import-posts.js`' +
+      ' to load some sample posts')
   }
 
-  posts.forEach((post) => {
-    console.log(
-
-`${post.title}
-${'-'.repeat(post.title.length)}
-Published on ${new Date(post.created_at).toISOString()}
-
-${post.content}
-`
-    )
-  })
+  for (const post of posts) {
+    console.log(post.title)
+    console.log('-'.repeat(post.title.length))
+    console.log(`Published on ${new Date(post.created_at)
+      .toISOString()}`)
+    console.log(post.content)
+  }
 }
 
-main()
+main().catch(console.error)

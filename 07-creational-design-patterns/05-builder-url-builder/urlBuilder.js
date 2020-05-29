@@ -38,7 +38,8 @@ export class UrlBuilder {
   }
 
   build () {
-    return new Url(this.protocol, this.username, this.password, this.hostname,
-      this.port, this.pathname, this.search, this.hash)
+    return new Url(this.protocol, this.username, this.password,
+      this.hostname, this.port, this.pathname, this.search,
+      this.hash)
   }
 }

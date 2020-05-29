@@ -1,4 +1,4 @@
-import { createPost } from './blog.js'
+import { Blog } from './blog.js'
 
 const posts = [
   {
@@ -23,9 +23,12 @@ const posts = [
 ]
 
 async function main () {
+  const blog = new Blog()
+  await blog.initialize()
+
   await Promise.all(
     posts.map(
-      (post) => createPost(
+      (post) => blog.createPost(
         post.id,
         post.title,
         post.content,
@@ -36,4 +39,4 @@ async function main () {
   console.log('All posts imported')
 }
 
-main()
+main().catch(console.error)

@@ -1,31 +1,27 @@
 import { db } from './db.js'
+import { promisify } from 'util'
 
-export function createPost (id, title, content, createdAt) {
-  return new Promise((resolve, reject) => {
-    db.run(
-      'INSERT INTO posts VALUES (?, ?, ?, ?)',
-      id, title, content, createdAt,
-      (err) => {
-        if (err) {
-          return reject(err)
-        }
-        resolve(id)
-      }
-    )
-  })
-}
+const dbRun = promisify(db.run.bind(db))
+const dbAll = promisify(db.all.bind(db))
 
-export function getAllPosts () {
-  return new Promise((resolve, reject) => {
-    db.all(
-      'SELECT * FROM posts ORDER BY created_at DESC',
-      (err, posts) => {
-        if (err) {
-          return reject(err)
-        }
+export class Blog {
+  initialize () {
+    const initQuery = `CREATE TABLE IF NOT EXISTS posts (
+      id TEXT PRIMARY KEY,
+      title TEXT NOT NULL,
+      content TEXT,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );`
 
-        resolve(posts)
-      }
-    )
-  })
+    return dbRun(initQuery)
+  }
+
+  createPost (id, title, content, createdAt) {
+    return dbRun('INSERT INTO posts VALUES (?, ?, ?, ?)',
+      id, title, content, createdAt)
+  }
+
+  getAllPosts () {
+    return dbAll('SELECT * FROM posts ORDER BY created_at DESC')
+  }
 }

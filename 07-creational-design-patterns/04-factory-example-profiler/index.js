@@ -1,7 +1,8 @@
 import { createProfiler } from './profiler.js'
 
 function getAllFactors (intNumber) {
-  const profiler = createProfiler(`Finding all factors for ${intNumber}`)
+  const profiler = createProfiler(
+    `Finding all factors of ${intNumber}`)
 
   profiler.start()
   const factors = []
