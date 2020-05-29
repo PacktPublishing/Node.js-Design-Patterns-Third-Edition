@@ -11,8 +11,15 @@ const streamB = new Transform({
 })
 const streamC = createWriteStream('package-uppercase.json')
 
-const pipelineReturn = pipeline(streamA, streamB, streamC, () => {})
-assert.equal(streamC, pipelineReturn) // valid
+const pipelineReturn = pipeline(
+  streamA,
+  streamB,
+  streamC,
+  () => {
+    // handle errors here
+  }
+)
+assert.strictEqual(streamC, pipelineReturn) // valid
 
 const pipeReturn = streamA.pipe(streamB).pipe(streamC)
-assert.equal(streamC, pipeReturn) // valid
+assert.strictEqual(streamC, pipeReturn) // valid
