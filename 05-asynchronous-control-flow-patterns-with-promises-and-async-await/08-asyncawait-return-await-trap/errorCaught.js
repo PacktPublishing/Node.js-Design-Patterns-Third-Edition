@@ -10,9 +10,11 @@ async function errorCaught () {
   try {
     return await delayError(1000)
   } catch (err) {
-    console.error(`Error caught by the async function: ${err.message}`)
+    console.error('Error caught by the async function: ' +
+      err.message)
   }
 }
 
 errorCaught()
-  .catch(err => console.error(`Error caught by the caller: ${err.message}`))
+  .catch(err => console.error('Error caught by the caller: ' +
+    err.message))
