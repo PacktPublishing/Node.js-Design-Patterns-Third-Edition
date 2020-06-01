@@ -1,4 +1,4 @@
-import request from 'superagent'
+import superagent from 'superagent'
 
 // The Invoker
 export class Invoker {
@@ -26,7 +26,7 @@ export class Invoker {
   }
 
   async runRemotely (cmd) {
-    await request
+    await superagent
       .post('http://localhost:3000/cmd')
       .send({ json: cmd.serialize() })
 

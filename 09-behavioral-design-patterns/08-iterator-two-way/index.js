@@ -12,11 +12,11 @@ const twoWay = twoWayGenerator()
 twoWay.next()
 console.log(twoWay.next('world'))
 
-console.log('throw():')
+console.log('Using throw():')
 const twoWayException = twoWayGenerator()
 twoWayException.next()
 console.log(twoWayException.throw(new Error('Boom!')))
 
-console.log('return():')
+console.log('Using return():')
 const twoWayReturn = twoWayGenerator()
 console.log(twoWayReturn.return('myReturnValue'))

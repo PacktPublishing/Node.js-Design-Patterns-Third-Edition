@@ -24,6 +24,7 @@ export class Config {
 
   async save (filePath) {
     console.log(`Serializing to ${filePath}`)
-    await fs.writeFile(filePath, this.formatStrategy.serialize(this.data))
+    await fs.writeFile(filePath,
+      this.formatStrategy.serialize(this.data))
   }
 }

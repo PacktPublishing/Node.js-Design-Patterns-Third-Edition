@@ -4,7 +4,8 @@ import objectPath from 'object-path'
 export class ConfigTemplate {
   async load (file) {
     console.log(`Deserializing from ${file}`)
-    this.data = this._deserialize(await fsPromises.readFile(file, 'utf-8'))
+    this.data = this._deserialize(
+      await fsPromises.readFile(file, 'utf-8'))
   }
 
   async save (file) {
