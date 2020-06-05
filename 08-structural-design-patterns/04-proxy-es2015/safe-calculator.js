@@ -1,20 +1,19 @@
 function createSafeCalculator (subjectCalculator) {
-  return {
-    // proxied method
-    divide (dividend, divisor) {
-      // additional validation logic
-      if (divisor === 0) {
-        throw Error('Division by 0')
+  return new Proxy(subjectCalculator, {
+    get: (target, property) => {
+      if (property === 'divide') {
+        return function (dividend, divisor) {
+          if (divisor === 0) {
+            throw Error('Division by 0')
+          }
+
+          return subjectCalculator.divide(dividend, divisor)
+        }
       }
 
-      return subjectCalculator.divide(dividend, divisor)
-    },
-
-    // delegated method
-    multiply (multiplier, multiplicand) {
-      return subjectCalculator.multiply(multiplier, multiplicand)
+      return target[property]
     }
-  }
+  })
 }
 
 class Calculator {
