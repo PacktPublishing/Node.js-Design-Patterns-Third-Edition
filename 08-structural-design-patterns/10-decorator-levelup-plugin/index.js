@@ -6,8 +6,8 @@ import { levelSubscribe } from './level-subscribe.js'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const dbPath = join(__dirname, 'db')
-let db = level(dbPath, { valueEncoding: 'json' }) // ①
-db = levelSubscribe(db) // ②
+const db = level(dbPath, { valueEncoding: 'json' }) // ①
+levelSubscribe(db) // ②
 
 db.subscribe( // ③
   { doctype: 'tweet', language: 'en' },
