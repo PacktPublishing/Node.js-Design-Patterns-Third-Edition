@@ -1,6 +1,7 @@
 function createSafeCalculator (subjectCalculator) {
   return new Proxy(subjectCalculator, {
     get: (target, property) => {
+      // proxied method
       if (property === 'divide') {
         return function (dividend, divisor) {
           if (divisor === 0) {
@@ -11,6 +12,7 @@ function createSafeCalculator (subjectCalculator) {
         }
       }
 
+      // delegated methods and properties
       return target[property]
     }
   })
