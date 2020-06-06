@@ -1,11 +1,24 @@
-import { decorate } from './decorate.js'
+class Calculator {
+  divide (dividend, divisor) {
+    return dividend / divisor
+  }
 
-class Greeter {
-  hello (subject) {
-    return `Hello ${subject}`
+  multiply (multiplier, multiplicand) {
+    return multiplier * multiplicand
   }
 }
 
-const decoratedGreeter = decorate(new Greeter())
-console.log(decoratedGreeter.hello('world')) // uses original method
-console.log(decoratedGreeter.greetings()) // uses new method
+function enhanceCalculator (calculator) {
+  // new method
+  calculator.add = function (...addends) {
+    return addends.reduce((a, b) => a + b, 0)
+  }
+  return calculator
+}
+
+const calculator = new Calculator()
+const enhancedCalculator = enhanceCalculator(calculator)
+
+console.log(enhancedCalculator instanceof Calculator) // true
+console.log(enhancedCalculator.multiply(3, 2)) // uses original method
+console.log(enhancedCalculator.add(4, 3, 2, 1)) // uses new method
