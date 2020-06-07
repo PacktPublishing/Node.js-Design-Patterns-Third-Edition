@@ -7,12 +7,6 @@ This example demonstrate how to create proxies using the ES2015 Proxy helper
 To run the example launch:
 
 ```bash
-node scientist.js # or node scientist-alternative.js
-```
-
-Or
-
-```bash
 node safe-calculator.js
 ```
 

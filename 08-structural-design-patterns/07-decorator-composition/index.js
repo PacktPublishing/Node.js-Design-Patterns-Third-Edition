@@ -8,30 +8,36 @@ class Calculator {
   }
 }
 
-function enhanceCalculator (calculator) {
-  const proto = Object.getPrototypeOf(calculator)
-  function EnhancedCalculator () {}
-  EnhancedCalculator.prototype = Object.create(proto)
+class EnhancedCalculator extends Calculator {
+  constructor (calculator) {
+    super()
+    this.calculator = calculator
+  }
 
   // new method
-  EnhancedCalculator.prototype.add = function (...addends) {
+  add (...addends) {
     return addends.reduce((a, b) => a + b, 0)
   }
 
-  // delegated methods
-  EnhancedCalculator.prototype.divide = function (...args) {
-    return calculator.divide(...args)
-  }
-  EnhancedCalculator.prototype.multiply = function (...args) {
-    return calculator.multiply(...args)
+  // modified method
+  divide (dividend, divisor) {
+    if (divisor === 0) {
+      throw Error('Division by 0')
+    }
+
+    return this.calculator(dividend, divisor)
   }
 
-  return new EnhancedCalculator(calculator)
+  // delegated method
+  multiply (...args) {
+    return this.calculator.multiply(...args)
+  }
 }
 
 const calculator = new Calculator()
-const enhancedCalculator = enhanceCalculator(calculator)
+const enhancedCalculator = new EnhancedCalculator(calculator)
 
 console.log(enhancedCalculator instanceof Calculator) // true
-console.log(enhancedCalculator.multiply(3, 2)) // uses original method
-console.log(enhancedCalculator.add(4, 3, 2, 1)) // uses new method
+console.log(enhancedCalculator.add(4, 3, 2, 1)) // 10
+console.log(enhancedCalculator.multiply(3, 2)) // 6
+// console.log(enhancedCalculator.divide(3, 0)) // Error('Division by 0')
