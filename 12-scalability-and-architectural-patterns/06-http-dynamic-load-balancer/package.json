@@ -17,12 +17,12 @@
   "license": "ISC",
   "dependencies": {
     "consul": "^0.37.0",
-    "forever": "^2.0.0",
-    "http-proxy": "^1.18.0",
-    "portfinder": "^1.0.25"
+    "forever": "^3.0.0",
+    "http-proxy": "^1.18.1",
+    "portfinder": "^1.0.26"
   },
   "devDependencies": {
-    "autocannon": "^4.6.0"
+    "autocannon": "^5.0.1"
   },
   "engines": {
     "node": ">=14"
