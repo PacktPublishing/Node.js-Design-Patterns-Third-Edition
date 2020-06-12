@@ -1,11 +1,37 @@
-import { decorate } from './decorate.js'
+class Calculator {
+  divide (dividend, divisor) {
+    return dividend / divisor
+  }
 
-class Greeter {
-  hello (subject) {
-    return `Hello ${subject}`
+  multiply (multiplier, multiplicand) {
+    return multiplier * multiplicand
   }
 }
 
-const decoratedGreeter = decorate(new Greeter())
-console.log(decoratedGreeter.hello('world')) // uses original method
-console.log(decoratedGreeter.greetings()) // uses new method
+function patchCalculator (calculator) {
+  // new method
+  calculator.add = function (...addends) {
+    return addends.reduce((a, b) => a + b, 0)
+  }
+
+  // modified method
+  const divideOrig = calculator.divide
+  calculator.divide = (dividend, divisor) => {
+    if (divisor === 0) {
+      throw Error('Division by 0')
+    }
+
+    return divideOrig(dividend, divisor)
+  }
+
+  return calculator
+}
+
+const calculator = new Calculator()
+const enhancedCalculator = patchCalculator(calculator)
+
+console.log(enhancedCalculator instanceof Calculator) // true
+console.log(enhancedCalculator.multiply(3, 2)) // 6
+console.log(enhancedCalculator.add(4, 3, 2, 1)) // 10
+console.log(calculator.add(4, 3, 2, 1)) // 10!
+// console.log(enhancedCalculator.divide(3, 0)) // Error('Division by 0')

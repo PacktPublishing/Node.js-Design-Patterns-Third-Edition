@@ -14,10 +14,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "forever": "^2.0.0"
+    "forever": "^3.0.0"
   },
   "devDependencies": {
-    "autocannon": "^4.6.0"
+    "autocannon": "^5.0.1"
   },
   "engines": {
     "node": ">=14"

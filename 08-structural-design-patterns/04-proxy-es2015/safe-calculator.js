@@ -8,29 +8,28 @@ class Calculator {
   }
 }
 
-function createSafeCalculator (calculator) {
-  return {
-    // proxied method
-    divide (dividend, divisor) {
-      // additional validation logic
-      if (divisor === 0) {
-        throw Error('Division by 0')
+const safeCalculatorHandler = {
+  get: (target, property) => {
+    if (property === 'divide') {
+      // proxied method
+      return function (dividend, divisor) {
+        if (divisor === 0) {
+          throw Error('Division by 0')
+        }
+
+        return target.divide(dividend, divisor)
       }
-
-      return calculator.divide(dividend, divisor)
-    },
-
-    // delegated method
-    multiply (multiplier, multiplicand) {
-      return calculator.multiply(multiplier, multiplicand)
     }
+
+    // delegated methods and properties
+    return target[property]
   }
 }
 
 const calculator = new Calculator()
-const safeCalculator = createSafeCalculator(calculator)
+const safeCalculator = new Proxy(calculator, safeCalculatorHandler)
 
-console.log(safeCalculator instanceof Calculator) // false!
+console.log(safeCalculator instanceof Calculator) // true!
 console.log(calculator.multiply(3, 2)) // 6
 console.log(safeCalculator.multiply(3, 2)) // 6
 console.log(calculator.divide(4, 2)) // 2

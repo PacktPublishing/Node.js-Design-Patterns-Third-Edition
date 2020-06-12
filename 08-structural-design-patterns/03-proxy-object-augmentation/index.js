@@ -1,17 +1,32 @@
-import { createProxy } from './create-proxy.js'
-
-class Greeter {
-  hello () {
-    return 'Hello'
+class Calculator {
+  divide (dividend, divisor) {
+    return dividend / divisor
   }
 
-  goodbye () {
-    return 'Goodbye'
+  multiply (multiplier, multiplicand) {
+    return multiplier * multiplicand
   }
 }
 
-const greeter = new Greeter()
-const proxy = createProxy(greeter)
+function patchToSafeCalculator (calculator) {
+  const divideOrig = calculator.divide
+  calculator.divide = (dividend, divisor) => {
+    if (divisor === 0) {
+      throw Error('Division by 0')
+    }
 
-console.log(proxy.hello())
-console.log(proxy.goodbye())
+    return divideOrig(dividend, divisor)
+  }
+
+  return calculator
+}
+
+const calculator = new Calculator()
+const safeCalculator = patchToSafeCalculator(calculator)
+
+console.log(calculator.multiply(3, 2)) // 6
+console.log(safeCalculator.multiply(3, 2)) // 6
+console.log(calculator.divide(4, 2)) // 2
+console.log(safeCalculator.divide(4, 2)) // 2
+// console.log(calculator.divide(2, 0)) // Error('Division by 0')
+console.log(safeCalculator.divide(2, 0)) // Error('Division by 0')
