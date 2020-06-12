@@ -15,5 +15,6 @@ npm install
 Then run:
 
 ```shell script
+node replier.js
 node requestor.js
 ```

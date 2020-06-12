@@ -1,6 +1,6 @@
-# 06-fanout-fanin
+# 06-task-distribution-zmq
 
-This sample demonstrates how run parallel tasks using a messaging pipeline and ZeroMQ
+This sample demonstrates how to run parallel tasks using a messaging pipeline and ZeroMQ
 
 ## Run
 

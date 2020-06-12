@@ -11,7 +11,7 @@ export function createRequestChannel (channel) {
       const replyTimeout = setTimeout(() => {
         correlationMap.delete(correlationId)
         reject(new Error('Request timeout'))
-      }, 2000)
+      }, 10000)
 
       correlationMap.set(correlationId, (replyData) => {
         correlationMap.delete(correlationId)

@@ -28,7 +28,7 @@ export class AMQPRequest {
       const replyTimeout = setTimeout(() => {
         this.correlationMap.delete(id)
         reject(new Error('Request timeout'))
-      }, 2000)
+      }, 10000)
 
       this.correlationMap.set(id, (replyData) => {
         this.correlationMap.delete(id)

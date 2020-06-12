@@ -1,6 +1,6 @@
 # 05-pubsub-redis-streams
 
-This sample demonstrates how to Redis streams to provide persistent message storage and real-time capabilities to a chat application
+This sample demonstrates how to use Redis streams to provide persistent message storage and real-time capabilities to a chat application
 
 ## Run
 
