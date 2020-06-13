@@ -1,37 +1,73 @@
-class Calculator {
-  divide (dividend, divisor) {
-    return dividend / divisor
+class StackCalculator {
+  constructor () {
+    this.stack = []
   }
 
-  multiply (multiplier, multiplicand) {
-    return multiplier * multiplicand
+  putValue (value) {
+    this.stack.push(value)
+  }
+
+  getValue () {
+    return this.stack.pop()
+  }
+
+  peekValue () {
+    return this.stack[this.stack.length - 1]
+  }
+
+  clear () {
+    this.stack = []
+  }
+
+  divide () {
+    const divisor = this.getValue()
+    const dividend = this.getValue()
+    const result = dividend / divisor
+    this.putValue(result)
+    return result
+  }
+
+  multiply () {
+    const multiplicand = this.getValue()
+    const multiplier = this.getValue()
+    const result = multiplier * multiplicand
+    this.putValue(result)
+    return result
   }
 }
 
 function patchCalculator (calculator) {
   // new method
-  calculator.add = function (...addends) {
-    return addends.reduce((a, b) => a + b, 0)
+  calculator.add = function () {
+    const addend2 = calculator.getValue()
+    const addend1 = calculator.getValue()
+    const result = addend1 + addend2
+    calculator.putValue(result)
+    return result
   }
 
   // modified method
   const divideOrig = calculator.divide
-  calculator.divide = (dividend, divisor) => {
+  calculator.divide = () => {
+    // additional validation logic
+    const divisor = calculator.peekValue()
     if (divisor === 0) {
       throw Error('Division by 0')
     }
-
-    return divideOrig(dividend, divisor)
+    // if valid delegates to the subject
+    return divideOrig.apply(calculator)
   }
 
   return calculator
 }
 
-const calculator = new Calculator()
+const calculator = new StackCalculator()
 const enhancedCalculator = patchCalculator(calculator)
 
-console.log(enhancedCalculator instanceof Calculator) // true
-console.log(enhancedCalculator.multiply(3, 2)) // 6
-console.log(enhancedCalculator.add(4, 3, 2, 1)) // 10
-console.log(calculator.add(4, 3, 2, 1)) // 10!
-// console.log(enhancedCalculator.divide(3, 0)) // Error('Division by 0')
+enhancedCalculator.putValue(4)
+enhancedCalculator.putValue(3)
+console.log(enhancedCalculator.add()) // 4+3 = 7
+enhancedCalculator.putValue(2)
+console.log(enhancedCalculator.multiply()) // 7*2 = 14
+// enhancedCalculator.putValue(0)
+// console.log(enhancedCalculator.divide()) // 14/0 -> Error('Division by 0')

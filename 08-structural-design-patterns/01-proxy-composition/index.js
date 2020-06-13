@@ -7,20 +7,32 @@ class StackCalculator {
     this.stack.push(value)
   }
 
+  getValue () {
+    return this.stack.pop()
+  }
+
   peekValue () {
     return this.stack[this.stack.length - 1]
   }
 
+  clear () {
+    this.stack = []
+  }
+
   divide () {
-    const divisor = this.stack.pop()
-    const dividend = this.stack.pop()
-    return dividend / divisor
+    const divisor = this.getValue()
+    const dividend = this.getValue()
+    const result = dividend / divisor
+    this.putValue(result)
+    return result
   }
 
   multiply () {
-    const multiplicand = this.stack.pop()
-    const multiplier = this.stack.pop()
-    return multiplier * multiplicand
+    const multiplicand = this.getValue()
+    const multiplier = this.getValue()
+    const result = multiplier * multiplicand
+    this.putValue(result)
+    return result
   }
 }
 
@@ -41,16 +53,24 @@ class SafeCalculator {
   }
 
   // delegated methods
-  putValue (...args) {
-    return this.calculator.putValue(...args)
+  putValue (value) {
+    return this.calculator.putValue(value)
+  }
+
+  getValue () {
+    return this.calculator.getValue()
   }
 
   peekValue () {
     return this.calculator.peekValue()
   }
 
-  multiply (...args) {
-    return this.calculator.multiply(...args)
+  clear () {
+    return this.calculator.clear()
+  }
+
+  multiply () {
+    return this.calculator.multiply()
   }
 }
 
@@ -61,14 +81,13 @@ calculator.putValue(3)
 calculator.putValue(2)
 console.log(calculator.multiply()) // 3*2 = 6
 
-safeCalculator.putValue(3)
 safeCalculator.putValue(2)
-console.log(safeCalculator.multiply()) // 3*2 = 6
+console.log(safeCalculator.multiply()) // 6*2 = 12
 
-calculator.putValue(4)
 calculator.putValue(0)
-console.log(calculator.divide()) // 4/0 = Infinity
+console.log(calculator.divide()) // 12/0 = Infinity
 
+safeCalculator.clear()
 safeCalculator.putValue(4)
 safeCalculator.putValue(0)
 console.log(safeCalculator.divide()) // 4/0 -> Error('Division by 0')
