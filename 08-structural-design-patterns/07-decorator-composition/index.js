@@ -1,43 +1,95 @@
-class Calculator {
-  divide (dividend, divisor) {
-    return dividend / divisor
+class StackCalculator {
+  constructor () {
+    this.stack = []
   }
 
-  multiply (multiplier, multiplicand) {
-    return multiplier * multiplicand
+  putValue (value) {
+    this.stack.push(value)
+  }
+
+  getValue () {
+    return this.stack.pop()
+  }
+
+  peekValue () {
+    return this.stack[this.stack.length - 1]
+  }
+
+  clear () {
+    this.stack = []
+  }
+
+  divide () {
+    const divisor = this.getValue()
+    const dividend = this.getValue()
+    const result = dividend / divisor
+    this.putValue(result)
+    return result
+  }
+
+  multiply () {
+    const multiplicand = this.getValue()
+    const multiplier = this.getValue()
+    const result = multiplier * multiplicand
+    this.putValue(result)
+    return result
   }
 }
 
-class EnhancedCalculator extends Calculator {
+class EnhancedCalculator {
   constructor (calculator) {
-    super()
     this.calculator = calculator
   }
 
   // new method
-  add (...addends) {
-    return addends.reduce((a, b) => a + b, 0)
+  add () {
+    const addend2 = this.getValue()
+    const addend1 = this.getValue()
+    const result = addend1 + addend2
+    this.putValue(result)
+    return result
   }
 
   // modified method
-  divide (dividend, divisor) {
+  divide () {
+    // additional validation logic
+    const divisor = this.calculator.peekValue()
     if (divisor === 0) {
       throw Error('Division by 0')
     }
-
-    return this.calculator(dividend, divisor)
+    // if valid delegates to the subject
+    return this.calculator.divide()
   }
 
-  // delegated method
-  multiply (...args) {
-    return this.calculator.multiply(...args)
+  // delegated methods
+  putValue (value) {
+    return this.calculator.putValue(value)
+  }
+
+  getValue () {
+    return this.calculator.getValue()
+  }
+
+  peekValue () {
+    return this.calculator.peekValue()
+  }
+
+  clear () {
+    return this.calculator.clear()
+  }
+
+  multiply () {
+    return this.calculator.multiply()
   }
 }
 
-const calculator = new Calculator()
+const calculator = new StackCalculator()
 const enhancedCalculator = new EnhancedCalculator(calculator)
 
-console.log(enhancedCalculator instanceof Calculator) // true
-console.log(enhancedCalculator.add(4, 3, 2, 1)) // 10
-console.log(enhancedCalculator.multiply(3, 2)) // 6
-// console.log(enhancedCalculator.divide(3, 0)) // Error('Division by 0')
+enhancedCalculator.putValue(4)
+enhancedCalculator.putValue(3)
+console.log(enhancedCalculator.add()) // 4+3 = 7
+enhancedCalculator.putValue(2)
+console.log(enhancedCalculator.multiply()) // 7*2 = 14
+// enhancedCalculator.putValue(0)
+// console.log(enhancedCalculator.divide()) // 14/0 -> Error('Division by 0')
