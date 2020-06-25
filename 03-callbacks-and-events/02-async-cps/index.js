@@ -5,5 +5,5 @@ function additionAsync (a, b, callback) {
 }
 
 console.log('before')
-additionAsync(1, 2, result => console.log(`Result: + ${result}`))
+additionAsync(1, 2, result => console.log(`Result: ${result}`))
 console.log('after')
