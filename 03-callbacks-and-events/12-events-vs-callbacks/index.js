@@ -13,4 +13,4 @@ function helloCallback (cb) {
 }
 
 helloEvents().on('complete', message => console.log(message))
-helloCallback((err, message) => console.error(message))
+helloCallback((err, message) => console.log(message))
