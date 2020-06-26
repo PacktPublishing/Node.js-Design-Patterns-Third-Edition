@@ -25,4 +25,4 @@ findRegex(
 )
   .on('fileread', file => console.log(`${file} was read`))
   .on('found', (file, match) => console.log(`Matched "${match}" in ${file}`))
-  .on('error', err => console.log(`Error emitted ${err.message}`))
+  .on('error', err => console.error(`Error emitted ${err.message}`))

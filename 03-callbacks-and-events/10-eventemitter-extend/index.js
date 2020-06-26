@@ -38,4 +38,4 @@ findRegexInstance
   .addFile('fileB.json')
   .find()
   .on('found', (file, match) => console.log(`Matched "${match}" in file ${file}`))
-  .on('error', err => console.log(`Error emitted ${err.message}`))
+  .on('error', err => console.error(`Error emitted ${err.message}`))
