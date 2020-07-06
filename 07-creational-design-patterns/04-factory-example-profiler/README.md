@@ -7,7 +7,7 @@ This example shows how to use the factory pattern that creates different objects
 To run the example launch:
 
 ```bash
-# Lanuch in development mode (with profiler)
+# Launch in development mode (with profiler)
 node index.js 2201307499
 
 # Launch in production mode (without profiler)
