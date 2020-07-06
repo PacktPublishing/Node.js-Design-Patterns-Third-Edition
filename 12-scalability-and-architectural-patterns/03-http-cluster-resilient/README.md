@@ -2,6 +2,15 @@
 
 This example demostrates how to benchmark a simple http server that uses the cluster module and provides auto restarting of failed workers.
 
+## Dependencies
+
+Install all the necessary dependencies with:
+
+```bash
+npm install
+```
+
+
 ## Run
 
 To run the example server:

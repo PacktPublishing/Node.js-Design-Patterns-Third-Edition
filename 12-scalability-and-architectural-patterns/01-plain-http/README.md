@@ -2,6 +2,16 @@
 
 This example demostrates how to benchmark a simple http server
 
+
+## Dependencies
+
+Install all the necessary dependencies with:
+
+```bash
+npm install
+```
+
+
 ## Run
 
 To run the example server:
