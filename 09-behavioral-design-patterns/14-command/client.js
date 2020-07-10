@@ -1,6 +1,6 @@
 import { createPostStatusCmd } from './createPostStatusCmd.js'
 import { statusUpdateService } from './statusUpdateService.js'
-import { Invoker } from './Invoker.js'
+import { Invoker } from './invoker.js'
 
 // The Client code
 const invoker = new Invoker()
