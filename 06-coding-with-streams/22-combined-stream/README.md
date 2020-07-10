@@ -1,4 +1,4 @@
-# 21-combined-stream
+# 22-combined-stream
 
 This examples shows how to create a combined stream using `pumpify`.
 

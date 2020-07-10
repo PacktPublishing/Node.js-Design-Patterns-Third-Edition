@@ -1,4 +1,4 @@
-# 24-multiplexing
+# 25-multiplexing
 
 This examples shows how to perform multiplexing and demultiplexing using Node.js streams.
 

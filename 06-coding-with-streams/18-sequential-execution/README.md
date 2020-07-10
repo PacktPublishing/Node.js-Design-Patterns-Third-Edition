@@ -1,4 +1,4 @@
-# 17-sequential-execution
+# 18-sequential-execution
 
 This examples shows how to create a sequential execution flow using streams.
 

@@ -1,4 +1,4 @@
-# 20-ordered-parallel-execution
+# 21-ordered-parallel-execution
 
 This examples shows how to create a limited parallel execution flow using streams.
 

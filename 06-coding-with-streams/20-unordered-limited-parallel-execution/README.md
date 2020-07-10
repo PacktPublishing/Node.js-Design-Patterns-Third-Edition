@@ -1,6 +1,6 @@
-# 18-unordered-parallel-execution
+# 20-unordered-limited-parallel-execution
 
-This examples shows how to create a parallel execution flow using streams.
+This examples shows how to create a limited parallel execution flow using streams.
 
 
 ## Dependencies
@@ -19,6 +19,9 @@ To run the example:
 ```bash
 node check-urls.js urls.txt
 ```
+
+For a long list of urls you can alternatively use the `500urls.txt` file!
+
 
 Then check the content of the results file with:
 

@@ -1,5 +1,5 @@
 {
-  "name": "18-unordered-parallel-execution",
+  "name": "20-unordered-limited-parallel-execution",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

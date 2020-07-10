@@ -1,4 +1,4 @@
-# 22-forking-streams
+# 23-forking-streams
 
 This examples shows how to fork a stream.
 

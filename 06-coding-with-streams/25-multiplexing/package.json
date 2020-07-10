@@ -1,5 +1,5 @@
 {
-  "name": "23-merging-streams",
+  "name": "25-multiplexing",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,9 +10,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "split": "^1.0.1"
-  },
   "engines": {
     "node": ">=14"
   },

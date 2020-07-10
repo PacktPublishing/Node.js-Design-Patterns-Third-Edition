@@ -1,8 +1,8 @@
 {
-  "name": "17-sequential-execution",
+  "name": "24-merging-streams",
   "version": "1.0.0",
   "description": "",
-  "main": "concat-files.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +10,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "split": "^1.0.1"
+  },
   "engines": {
     "node": ">=14"
   },

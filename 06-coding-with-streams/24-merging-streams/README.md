@@ -1,4 +1,4 @@
-# 23-merging-streams
+# 24-merging-streams
 
 This examples shows how to merge streams.
 
