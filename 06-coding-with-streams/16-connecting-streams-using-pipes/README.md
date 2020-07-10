@@ -1,4 +1,4 @@
-# 17-connecting-streams-using-pipes
+# 16-connecting-streams-using-pipes
 
 This examples shows how to connect streams using `.pipe()`.
 

@@ -1,8 +1,8 @@
 {
-  "name": "16-pipeline-helper",
+  "name": "16-connecting-streams-using-pipes",
   "version": "1.0.0",
   "description": "",
-  "main": "uppercasify-gzipped.js",
+  "main": "replace.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
