@@ -1,8 +1,8 @@
 {
-  "name": "15-passthrough-late-piping-alternative",
+  "name": "17-connecting-streams-using-pipes",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "replace.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,10 +10,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "aws-sdk": "^2.606.0",
-    "axios": "^0.19.2"
-  },
   "engines": {
     "node": ">=14"
   },
