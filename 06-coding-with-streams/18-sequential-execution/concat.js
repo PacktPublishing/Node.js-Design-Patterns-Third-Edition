@@ -8,6 +8,6 @@ async function main () {
     process.exit(1)
   }
 
-  console.log('All files concatenad successfully')
+  console.log('All files concatenated successfully')
 }
 main()
