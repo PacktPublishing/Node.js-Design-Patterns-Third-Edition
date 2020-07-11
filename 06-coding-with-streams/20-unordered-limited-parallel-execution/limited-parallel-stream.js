@@ -6,8 +6,8 @@ export class LimitedParallelStream extends Transform {
     this.concurrency = concurrency
     this.userTransform = userTransform
     this.running = 0
-    this.terminateCb = null
     this.continueCb = null
+    this.terminateCb = null
   }
 
   _transform (chunk, enc, done) {
