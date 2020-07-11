@@ -11,9 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.88.0",
-    "request-promise": "^4.2.5",
-    "split": "^1.0.1"
+    "split": "^1.0.1",
+    "superagent": "^5.3.1"
   },
   "engines": {
     "node": ">=14"

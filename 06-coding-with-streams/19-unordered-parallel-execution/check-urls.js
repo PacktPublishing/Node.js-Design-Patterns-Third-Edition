@@ -1,7 +1,7 @@
 import { pipeline } from 'stream'
 import { createReadStream, createWriteStream } from 'fs'
 import split from 'split'
-import request from 'request-promise'
+import superagent from 'superagent'
 import { ParallelStream } from './parallel-stream.js'
 
 pipeline(
@@ -13,7 +13,7 @@ pipeline(
         return done()
       }
       try {
-        await request.head(url, { timeout: 5 * 1000 })
+        await superagent.head(url, { timeout: 5 * 1000 })
         push(`${url} is up\n`)
       } catch (err) {
         push(`${url} is down\n`)
