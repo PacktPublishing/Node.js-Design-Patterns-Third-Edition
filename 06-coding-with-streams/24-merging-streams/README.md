@@ -3,6 +3,15 @@
 This examples shows how to merge streams.
 
 
+## Dependencies
+
+Install all necessary dependencies with:
+
+```bash
+npm install
+```
+
+
 ## Run
 
 To run the example:
