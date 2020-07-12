@@ -6,7 +6,7 @@ export class Matrix {
   get (row, column) {
     if (row >= this.data.length ||
       column >= this.data[row].length) {
-      throw new Error('Out of bounds')
+      throw new RangeError('Out of bounds')
     }
     return this.data[row][column]
   }
@@ -14,7 +14,7 @@ export class Matrix {
   set (row, column, value) {
     if (row >= this.data.length ||
       column >= this.data[row].length) {
-      throw new Error('Out of bounds')
+      throw new RangeError('Out of bounds')
     }
     this.data[row][column] = value
   }
