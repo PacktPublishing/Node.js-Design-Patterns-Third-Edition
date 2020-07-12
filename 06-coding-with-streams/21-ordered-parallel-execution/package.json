@@ -1,5 +1,5 @@
 {
-  "name": "15-passthrough-late-piping-alternative",
+  "name": "21-ordered-parallel-execution",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,8 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.606.0",
-    "axios": "^0.19.2"
+    "parallel-transform": "^1.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "split": "^1.0.1"
   },
   "engines": {
     "node": ">=14"

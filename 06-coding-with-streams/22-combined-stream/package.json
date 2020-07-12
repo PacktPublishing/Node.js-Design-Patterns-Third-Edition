@@ -1,5 +1,5 @@
 {
-  "name": "15-passthrough-late-piping-alternative",
+  "name": "22-combined-stream",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,8 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.606.0",
-    "axios": "^0.19.2"
+    "pumpify": "^2.0.1"
   },
   "engines": {
     "node": ">=14"

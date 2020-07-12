@@ -15,7 +15,7 @@ export class FailsafeSocket {
   }
 
   changeState (state) {
-    console.log('Activating state: ' + state)
+    console.log(`Activating state: ${state}`)
     this.currentState = this.states[state]
     this.currentState.activate()
   }
