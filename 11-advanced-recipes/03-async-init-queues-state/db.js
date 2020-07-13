@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events'
 
-const METHODS_NEEDING_CONNECTION = ['query']
+const METHODS_REQUIRING_CONNECTION = ['query']
 const deactivate = Symbol('deactivate')
 
 class InitializedState {
@@ -14,7 +14,7 @@ class QueuingState {
     this.db = db
     this.commandsQueue = []
 
-    METHODS_NEEDING_CONNECTION.forEach(methodName => {
+    METHODS_REQUIRING_CONNECTION.forEach(methodName => {
       this[methodName] = function (...args) {
         console.log('Command queued:', methodName, arguments)
         return new Promise((resolve, reject) => {
