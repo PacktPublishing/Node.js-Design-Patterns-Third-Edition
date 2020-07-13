@@ -16,7 +16,7 @@ class QueuingState {
 
     METHODS_REQUIRING_CONNECTION.forEach(methodName => {
       this[methodName] = function (...args) {
-        console.log('Command queued:', methodName, arguments)
+        console.log('Command queued:', methodName, args)
         return new Promise((resolve, reject) => {
           const command = () => {
             db[methodName](...args)
