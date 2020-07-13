@@ -23,9 +23,9 @@ export class ThreadPool {
       }
 
       worker = new Worker(this.file)
-      worker.once('online', message => {
+      worker.once('online', () => {
         this.active.push(worker)
-        return resolve(worker)
+        resolve(worker)
       })
       worker.once('exit', code => {
         console.log(`Worker exited with code ${code}`)
