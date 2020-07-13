@@ -19,7 +19,7 @@ async function main () {
 
   setInterval(() => {
     zmqm.send({ action: 'ping', echo: Date.now() })
-      .catch(err => console.log(err))
+      .catch(err => console.error(err))
   }, 1000)
 
   console.log('Client connected')
