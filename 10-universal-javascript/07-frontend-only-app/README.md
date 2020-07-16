@@ -24,4 +24,10 @@ Alternatively, you can build a static version of the frontend app with:
 npm run build # or node_modules/.bin/webpack --config webpack.config.cjs
 ```
 
-Then you can open the file `dist/index.html` with your favorite browser.
+Then you can run the built static frontend by running:
+
+```bash
+npx http-server public
+```
+
+And then pointing your favorite browser to http://localhost:8080.
