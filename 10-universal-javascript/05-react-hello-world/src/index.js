@@ -1,18 +1,18 @@
 import react from 'react'
 import ReactDOM from 'react-dom'
-import htm from 'htm'
 
-const html = htm.bind(react.createElement)
+const h = react.createElement // ①
 
-class Hello extends react.Component {
-  render () {
-    return html`<h1>
-      Hello ${this.props.name || 'World'}
-    </h1>`
+class Hello extends react.Component { // ②
+  render () { // ③
+    return h('h1', null, [ // ④
+      'Hello ',
+      this.props.name || 'World'
+    ])
   }
 }
 
-ReactDOM.render(
-  html`<${Hello} name="React"/>`,
+ReactDOM.render( // ⑤
+  h(Hello, { name: 'React' }),
   document.getElementsByTagName('body')[0]
 )
