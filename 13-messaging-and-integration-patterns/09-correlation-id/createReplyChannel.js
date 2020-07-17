@@ -1,17 +1,16 @@
 
 export function createReplyChannel (channel) {
   return function registerHandler (handler) {
-    channel.on('message', message => {
+    channel.on('message', async message => {
       if (message.type !== 'request') {
         return
       }
 
-      handler(message.data, replyData => {
-        channel.send({
-          type: 'response',
-          data: replyData,
-          inReplyTo: message.id
-        })
+      const replyData = await handler(message.data)
+      channel.send({
+        type: 'response',
+        data: replyData,
+        inReplyTo: message.id
       })
     })
   }

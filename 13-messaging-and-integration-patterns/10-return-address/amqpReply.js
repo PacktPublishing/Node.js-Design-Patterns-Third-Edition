@@ -14,16 +14,15 @@ export class AMQPReply {
   }
 
   handleRequests (handler) {
-    this.channel.consume(this.queue, msg => {
+    this.channel.consume(this.queue, async msg => {
       const content = JSON.parse(msg.content.toString())
-      handler(content, replyData => {
-        this.channel.sendToQueue(
-          msg.properties.replyTo,
-          Buffer.from(JSON.stringify(replyData)),
-          { correlationId: msg.properties.correlationId }
-        )
-        this.channel.ack(msg)
-      })
+      const replyData = await handler(content)
+      this.channel.sendToQueue(
+        msg.properties.replyTo,
+        Buffer.from(JSON.stringify(replyData)),
+        { correlationId: msg.properties.correlationId }
+      )
+      this.channel.ack(msg)
     })
   }
 }
