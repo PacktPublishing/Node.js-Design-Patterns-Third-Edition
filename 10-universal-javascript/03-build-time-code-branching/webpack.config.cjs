@@ -39,7 +39,7 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin(),
     new webpack.DefinePlugin({
-      __BROWSER__: JSON.stringify(true)
+      __BROWSER__: true
     })
   ],
 
