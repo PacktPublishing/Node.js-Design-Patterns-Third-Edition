@@ -1,5 +1,5 @@
 import { fork } from 'child_process'
-import { dirname } from 'path'
+import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import { once } from 'events'
 import { createRequestChannel } from './createRequestChannel.js'
@@ -7,7 +7,7 @@ import { createRequestChannel } from './createRequestChannel.js'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 async function main () {
-  const channel = fork(`${__dirname}/replier.js`)
+  const channel = fork(join(__dirname, 'replier.js'))
   const request = createRequestChannel(channel)
 
   try {
