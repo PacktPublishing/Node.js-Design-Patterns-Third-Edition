@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events'
-import { ThreadPool } from './threadPool.js'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
+import { ThreadPool } from './threadPool.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const workerFile = join(__dirname,
