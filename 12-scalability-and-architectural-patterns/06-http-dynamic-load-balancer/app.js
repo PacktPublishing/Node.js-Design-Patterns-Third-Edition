@@ -43,7 +43,7 @@ async function main () {
     res.end(`${serviceType} response from ${pid}\n`)
   })
 
-  server.listen(port, () => {
+  server.listen(port, address, () => {
     registerService()
     console.log(`Started ${serviceType} at ${pid} on port ${port}`)
   })
