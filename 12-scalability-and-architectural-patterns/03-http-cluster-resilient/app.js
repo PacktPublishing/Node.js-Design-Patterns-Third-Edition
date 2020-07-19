@@ -13,9 +13,10 @@ if (cluster.isMaster) {
     }
   })
 } else {
-  setTimeout(() => {
-    throw new Error('Ooops')
-  }, Math.ceil(Math.random() * 3) * 1000)
+  setTimeout(
+    () => { throw new Error('Ooops') },
+    Math.ceil(Math.random() * 3) * 1000
+  )
   const { pid } = process
   const server = createServer((req, res) => {
     let i = 1e7; while (i > 0) { i-- }
