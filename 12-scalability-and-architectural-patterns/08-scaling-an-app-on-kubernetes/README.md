@@ -1,6 +1,6 @@
 # 08-scaling-an-app-on-kubernetes
 
-This examples demostrates how to deploy and scale a simple Node.js webserver on Kubernetes (using minikube)
+This examples demonstrates how to deploy and scale a simple Node.js webserver on Kubernetes (using minikube)
 
 ## Requirements
 
@@ -21,7 +21,7 @@ docker build -t hello-web:v1 .
 
 ### 2. Add the app to the kubernetes cluster
 
-Start the minikube kubernetes dashboard to see how you local cluster changes with the varius interactions we are going to perform:
+Start the minikube kubernetes dashboard to see how you local cluster changes with the various interactions we are going to perform:
 
 ```bash
 minikube dashboard
