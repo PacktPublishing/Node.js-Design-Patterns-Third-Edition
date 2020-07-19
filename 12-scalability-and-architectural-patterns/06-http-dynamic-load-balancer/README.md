@@ -27,10 +27,12 @@ Run consul with:
 npm run start:consul # or `consul agent -dev`
 ```
 
+Once this is started, you can access consul web ui at http://localhost:8500/.
+
 To run some applications:
 
 ```bash
-npm run start:apps # or `node_modules/.bin/forever start app.js api-service && node_modules/.bin/forever start app.js api-service && node_modules/.bin/forever start app.js webapp-service`
+npm run start:apps # or `forever start -f --killSignal=SIGINT app.js api-service && forever start -f --killSignal=SIGINT app.js api-service && forever start -f --killSignal=SIGINT app.js webapp-service`
 ```
 
 To run the load balancer:
