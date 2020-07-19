@@ -35,6 +35,8 @@ Now run nginx with:
 npm run start:nginx # or `nginx -c ${PWD}/nginx.conf`
 ```
 
+**Note**: On some systems, the command above might fail because of permission issues. If you can't figure out how to set the right permissions for your system, you could try to run the command as admin (`sudo npm run start:nginx`).
+
 To run a benchmark (in another terminal):
 
 ```bash
