@@ -2,7 +2,7 @@
 /* eslint no-global-assign: off */
 
 // save the original require
-var originalRequire = require
+const originalRequire = require
 
 const fs = originalRequire('fs')
 
