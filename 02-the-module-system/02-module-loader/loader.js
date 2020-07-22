@@ -1,7 +1,14 @@
 /* eslint no-eval: off */
 /* eslint no-global-assign: off */
 
-// save the original require
+/**
+In this particular implementation we are using the original
+`resolve()` from Node.js `require`, therefore we have to do the following:
+
+  1. store a reference to the original require function (`originalRequre`)
+  2. redefine `require` by overriding the global `require` function
+  3. the new `require.resolve()` will essentially need to call the original require `resolve()`
+*/
 const originalRequire = require
 
 const fs = originalRequire('fs')
