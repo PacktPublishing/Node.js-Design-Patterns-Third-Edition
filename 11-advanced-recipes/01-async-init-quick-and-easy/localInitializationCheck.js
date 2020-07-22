@@ -1,5 +1,5 @@
-import { db } from './db.js'
 import { once } from 'events'
+import { db } from './db.js'
 
 db.connect()
 
