@@ -24,7 +24,7 @@ async function initializeSockets () {
 
   for await (const [msg] of subSocket) {
     console.log(`Message from another server: ${msg}`)
-    broadcast(msg.toString().split(' ')[1])
+    broadcast(msg.toString().split(' ').slice(1).join(' '))
   }
 }
 
