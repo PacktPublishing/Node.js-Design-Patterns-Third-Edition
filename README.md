@@ -26,4 +26,4 @@ A book is a work of art and passion. We invested a lot of our time and tried our
   - Check out and follow this project on [Product Hunt](https://www.producthunt.com/posts/node-js-design-patterns-third-edition) and [Indie Hackers](https://www.indiehackers.com/product/node-js-design-patterns)
   - Follow the authors on Twitter: [Mario Casciaro](https://twitter.com/mariocasciaro), [Luciano Mammino](https://twitter.com/loige)
   
-THANK YOU ❤️
+THANK YOUUUU ❤️
