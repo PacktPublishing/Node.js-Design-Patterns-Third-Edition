@@ -1,23 +1,26 @@
 export class OnlineState {
-  constructor (failsafeSocket) {
+  constructor(failsafeSocket) {
     this.failsafeSocket = failsafeSocket
     this.hasDisconnected = false
   }
 
-  send (data) {
+  send(data) {
     this.failsafeSocket.queue.push(data)
     this._safeWrite(data)
   }
 
-  _safeWrite (data) {
+  _safeWrite(data) {
     this.failsafeSocket.socket.write(data, (err) => {
       if (!this.hasDisconnected && !err) {
         this.failsafeSocket.queue.shift()
+      } else {
+        this.hasDisconnected = true
+        this.failsafeSocket.changeState('offline')
       }
     })
   }
 
-  activate () {
+  activate() {
     this.hasDisconnected = false
     for (const data of this.failsafeSocket.queue) {
       this._safeWrite(data)
